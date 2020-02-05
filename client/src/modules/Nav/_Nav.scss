@@ -1,0 +1,70 @@
+@import "../../colors";
+@import "../../includes";
+
+.navbar {
+	background: $background-color;
+	padding: 0;
+	z-index: 2;
+	transition: width 0.2s ease;
+	
+	.navbar-collapse {
+		.navbar-nav {
+
+			.nav-item {
+				transition: color 0.2s ease, background-color 0.2s ease;
+
+				&:hover .nav-link {
+					color: $primary-color;
+					background-color: rgba(255, 255, 255, 0.01);
+				}
+
+				&.active {
+					.nav-link {
+						color: $primary-color;
+					}
+				}
+
+				.nav-link {
+					padding: 1.25rem;
+					color: inherit;
+					font-weight: bold;
+					transition: color 0.2s ease;
+					border-right: 1px solid #191919;
+				}
+
+				.feather {
+					margin-right: 0.25em;
+				}
+			}
+
+			.show {
+				.user-area {
+					
+				}
+			}
+		}	
+
+		.nav-system-icon {
+			button {
+				position: relative;
+
+				.badge {
+					right: 0;
+					position: absolute;
+				}
+			}
+		}
+	}
+
+	.svgLogo {
+		width: 30px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 1em;
+	}
+
+	.slogin {
+		border-radius: 0.25rem;
+	}
+}

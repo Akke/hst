@@ -1,0 +1,25 @@
+@import "../../../colors";
+
+.offer-sorting {
+	background-color: $background-color;
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.02), 0 1px 10px 0 rgba(0, 0, 0, 0.02);
+	padding: 1em;
+	position: relative;
+
+	.form-control {
+		padding: 1.5rem;
+
+		input, select {
+			color: $text-color;
+		}
+	}
+	
+	legend {
+		font-weight: bold;
+	}
+
+	.form-group, .form-check {
+		margin-bottom: 0;
+	}
+}
+

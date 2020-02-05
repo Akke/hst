@@ -1,0 +1,134 @@
+@import "../../../colors";
+@import "../../../includes";
+
+.chat-window {
+	max-height: 100%;
+
+	.recipient-header {
+		display: flex;
+		padding: 1em;
+		margin: 0 0 1em 0;
+		background-color: #000;
+		border-radius: 0.25rem;
+		@include shadow-sm();
+
+		> img {
+			height: 38px;
+			margin-right: 1em;
+			border-radius: 50%;
+		}
+
+		.user-details {
+			> .username {
+				font-weight: bold;
+				color: $primary-color;
+			}
+
+			a:hover {
+				color: #FFF;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.chat-messages {
+		overflow-y: auto;
+		max-height: 100vh;
+		height: 100vh;
+		padding-bottom: 21rem;
+		position: relative;
+		z-index: 1;
+
+		.message-list {
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+
+			> li.divider {
+				padding: 1em;
+				position: relative;
+				text-align: center;
+				font-size: 0.8em;
+				display: inherit;
+				opacity: 0.6;
+			}
+
+			> li.self {
+				
+			}
+
+			> li {
+				display: flex;
+				padding: 1em;
+
+				> img {
+					height: 38px;
+					border-radius: 50%;
+				}
+
+				> .message-container {
+					margin-left: 1em;
+					width: 100%;
+
+					> .message {
+						background-color: #151515;
+						border-radius: 0.25rem;
+						padding: 1em;
+						margin-bottom: 0.5em;
+					}
+
+					> .timestamp {
+						font-size: 0.8em;
+					}
+				}
+			}
+
+			&__item {
+				$this: &;
+
+				&__message {
+					&--self {
+						background-color: #ab4500 !important;
+						color: #FFF;
+
+						@at-root #{$this} {
+							> .message-container {
+								margin: 0 1em 0 0;
+
+								> .timestamp {
+									text-align: right;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.chat-box {
+		position: absolute;
+		padding: 1em;
+		border-top: 1px solid rgba(255, 255, 255, 0.03);
+		z-index: 2;
+		bottom: 0;
+		width: 100%;
+		background-color: $background-color-focus;
+
+		> input {
+			color: currentColor;
+			padding: 2em 1.5em;
+			background-color: #191919;
+			transition: background-color 0.2s ease;
+
+			&:focus {
+				background-color: $wrapper-color;
+			}
+		}
+
+		> button {
+			width: 100%;
+			margin-top: 0.5em;
+		}
+	}
+}

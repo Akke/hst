@@ -1,0 +1,68 @@
+@import "../../../colors";
+
+.navbar {
+	.nav-search {
+		width: 25rem;
+		transition: width 0.2s ease;
+		-moz-transition: width 0.2s ease;
+		-webkit-transition: width 0.2s ease;
+		position: relative;
+		border-right: 1px solid #1f1e1c;
+
+		input, .dropdown {
+			width:100%;
+		}
+
+		input {
+			padding: 2.15em;
+			border-radius: 0;
+			background-color: #191919;
+			transition: background-color 0.2s ease;
+			color: inherit;
+
+			&:focus {
+				background-color: $wrapper-color;
+			}
+		}
+
+		.search-icon {
+			position: absolute;
+			right: 1em;
+			top: 1.4em;
+			pointer-events: none;
+		}
+
+		.dropdown-menu-search {
+			width: 100%;
+
+			.search-users {
+				display: flex;
+				padding: 0.5em 1em;
+
+				img {
+					width: 33px;
+					height: 33px;
+					border-radius: 0.25rem;
+					margin-right: 0.75em;
+				}
+
+				.username {
+					font-weight: bold;
+				}
+
+				.user-data {
+					width: 100%;
+
+					.user-text {
+						display: flex;
+						justify-content: space-between;
+
+						.badge {
+							line-height: 1.5;
+						}
+					}
+				}
+			}
+		}
+	}
+}

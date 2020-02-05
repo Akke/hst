@@ -1,0 +1,96 @@
+{
+	"api": {
+		"errors": {
+			"offer": {
+				"create": {
+					"type": {
+						"invalidType": "O tipo de pedido deve ser escrito (string).",
+						"invalidOption": "O tipo de pedido deve ser de Compra ou Venda.",
+						"sizeMin": "O tipo de pedido deve ser igual a % ou maior.",
+						"sizeMax": "O tipo de pedido excedeu o máximo (%).",
+						"required": "Você deve selecionar um tipo de pedido."
+					},
+					"mode": {
+						"invalidOption": "O modo de pedido deve ser Softcore ou Hardcore.",
+						"invalidType": "O modo de pedido deve ser escrito (string).",
+						"sizeMin": "O modo de pedido deve ser igual a % ou maior.",
+						"sizeMax": "O modo de pedido excedeu o máximo (%).",
+						"required": "Você deve selecionar um modo de pedido."
+					},
+					"item": {
+						"required": "Você deve selecionar um item.",
+						"value": {
+							"invalidType": "O item deve ser um número.",
+							"invalidNumber": "O item deve ser um número inteiro.",
+							"sizeMin": "O item deve ser igual a % ou maior.",
+							"required": "Você deve selecionar um item."
+						},
+						"ability": {
+							"invalidType": "A habilidade do item deve ser um número.",
+							"invalidNumber": "A habilidade do item deve ser um número inteiro.",
+							"sizeMin": "A habilidade do item deve ser igual a % ou maior.",
+							"required": "Você precisa selecionar uma habilidade de item para sua arma."
+						}
+					},
+					"runes": {
+						"value": {
+							"invalidType": "O valor da Runa/Gema deve ser um número.",
+							"invalidNumber": "O valor da Runa/Gema deve ser um número inteiro.",
+							"sizeMin": "O valor da Runa/Gema deve ser igual a % ou maior.",
+							"required": "O valor da Runa/Gema não pode ser vazio."
+						},
+						"amount": {
+							"invalidType": "A quantidade de Runa/Gema deve ser um número.",
+							"invalidNumber": "A quantidade de Runa/Gema deve ser um número inteiro.",
+							"sizeMin": "Você deve selecionar, pelo menos, % como quantidade.",
+							"sizeMax": "A quantidade de Runa/Gema excedeu o máximo (%)."
+						}
+					},
+					"level": {
+						"invalidType": "O nível do item deve ser um número.",
+						"invalidNumber": "O nível do item deve ser um número inteiro.",
+						"required": "Você deve definir o nível do item.",
+						"levelMin": "O menor nível possível é %.",
+						"levelMax": "O maior nível possível é %."
+					},
+					"quality": {
+						"invalidType": "A qualidade do item deve ser um número.",
+						"invalidNumber": "A qualidade do item deve ser um número inteiro.",
+						"required": "Você deve definir a qualidade do item.",
+						"qualityMin": "A menor qualidade possível é %.",
+						"qualityMax": "A maior qualidade possível é %."
+					},
+					"bidding": {
+						"invalidOption": "As opções para lances podem apenas ser de verdadeiro ou falso."
+					},
+					"buyout": {
+						"invalidType": "O preço de compra instantânea do item deve ser um número.",
+						"invalidNumber": "O preço de compra instantânea do item deve ser um número inteiro.",
+						"required": "Você deve definir o preço de compra instantânea do item.",
+						"sizeMin": "O menor preço de compra instantânea possível é de % Rubís.",
+						"sizeMax": "O maior preço de compra instantânea possível é de % Rubís."
+					},
+					"expires": {
+						"invalidType": "O tempo para expirar deve ser um número.",
+						"invalidNumber": "O tempo para expirar deve ser um número inteiro.",
+						"invalidOption": "O tempo para expirar deve ser de 6, 12, 24 ou 36 horas.",
+						"required": "Você deve especificar o tempo para expirar a troca."
+					},
+					"price": {
+						"invalidType": "O preço do item deve ser um número.",
+						"invalidNumber": "O preço do item deve ser um número inteiro.",
+						"required": "Você deve especificar o preço do item.",
+						"sizeMin": "O menor preço possível é de % Rubís.",
+						"sizeMax": "O maior preço possível é de % Rubís."
+					},
+					"region": {
+						"invalidType": "A região deve ser um código de País válido.",
+						"required": "Você deve especificar a região.",
+						"sizeMin": "O código do País é muito curto. Ele deve ter, pelo menos, % caractéres.",
+						"sizeMax": "Muitos caractéres no código do País. Ele não deve exceder % caractéres."
+					}
+				}
+			}
+		}
+	}
+}

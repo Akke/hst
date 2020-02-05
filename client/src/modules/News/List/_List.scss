@@ -1,0 +1,50 @@
+@import "../../../includes";
+
+.list-group {
+	@include shadow-sm();
+
+	> .title {
+		&:hover {
+			background-color: #FFF !important;
+			text-decoration: none;
+		}
+	}
+
+	> .list-group-item {
+		border: none;
+		transition: background-color 0.2s ease;
+
+		strong {
+			transition: color 0.2s ease;
+		}
+
+		&:hover, &:active, &:focus {
+			background-color: #f3f7fb;
+			outline: none;
+			strong {
+				color: #495057 !important;
+			}
+		}
+
+		&.active {
+			background-color: #eef3f7;
+			color: #495057;
+			position: relative;
+
+			&:after {
+				content: "";
+				position: absolute;
+				right: 1em;
+				top: 1em;
+				background-image: url("/images/newspin.svg");
+				background-repeat: no-repeat;
+				width: 10px;
+				height: 10px;
+			}
+
+			&:hover {
+				background-color: #eef3f7;
+			}
+		}
+	}
+}

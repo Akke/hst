@@ -1,0 +1,19 @@
+@import "../../../../includes";
+
+.chart-price-tooltip {
+	background-color: #FFF;
+	@include shadow-sm();
+	border-radius: 0.25rem;
+	padding: 1em;
+	color: #5b7592;
+
+	img {
+		height: 13px;
+		margin-right: 5px;
+	}
+}
+
+.recharts-cartesian-axis-tick text {
+	fill: #5b7592;
+	font-size: .8em;
+}

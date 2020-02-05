@@ -1,0 +1,120 @@
+@import "../../colors";
+@import "../../includes";
+
+.chat-container {
+	background-color: $background-color-focus;
+	z-index: 5;
+	width: 0;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	display: none;
+	transition: width 0.2s ease;
+	@include shadow-lg();
+
+	.page-loading {
+		margin-top: 1em;
+	}
+
+	&.open {
+		animation: chat-open .2s forwards;
+		display: block;
+	}
+
+	> .header {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+		> h4 {
+			padding: 1em;
+			color: $primary-color;
+			margin-bottom: 0;
+		}
+
+		> .feather {
+			stroke: $primary-color;
+		    height: 30px;
+		    width: 30px;
+		    margin: 1em;
+		    cursor: pointer;
+		}
+	}
+
+	.recipients {
+		margin-top: 1em;
+
+		> .list-group-item {
+			background-color: $background-color;
+			display: flex;
+			color: currentColor;
+			position: relative;
+			border: none;
+
+			&:before {
+				content: attr(data-unread);
+				position: absolute;
+				right: 21rem;
+				top: 0.5rem;
+				background-color: #c33535;
+			    padding: 0 0.25em;
+			    font-size: 0.7em;
+			    border-radius: 0.25rem;
+			    font-weight: bold;
+			    color: #FFF;
+			}
+
+			&.active {
+				background-color: $wrapper-color;
+				color: #FFF;
+
+				&:after {
+					display: none;
+				}
+
+				&:hover {
+					background-color: lighten($background-color, 1%);
+				}
+			}
+
+			&:hover {
+				background-color: lighten($background-color, 1%);
+			}
+
+			img {
+				width: 32px;
+				border-radius: 50%;
+			}
+
+			> .details {
+				margin-left: 1em;
+
+				> .recipient-name {
+					font-weight: bold;
+					color: $primary-color;
+				}
+
+				> .last-message {
+					font-size: 0.8em;
+
+					> .feather {
+						width: 12px;
+						margin-right: 0.5em;
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes chat-open {
+	0% {
+		width: 0;
+	}
+
+	100% {
+		width: 25rem;
+	}
+}

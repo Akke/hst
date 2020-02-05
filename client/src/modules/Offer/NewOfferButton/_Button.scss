@@ -1,0 +1,40 @@
+@import "../../../includes";
+
+.new-offer {
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	position: fixed;
+	bottom: 1rem;
+	right: 3rem;
+
+	&:hover {
+		.new-offer-button {
+			background-color: #0069d9;
+    		border-color: #0062cc;
+		}
+
+		span {
+			color: #0069d9 !important;
+		}
+	}
+
+	.new-offer-button {
+		border-radius: 50%;
+		width: 5rem;
+		height: 5rem;
+		@include shadow-lg();
+
+		.feather {
+			transform: scale(2);
+		}
+	}
+
+	span {
+		display: block;
+		margin-top: 0.5em;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 1.1em;
+	}
+}

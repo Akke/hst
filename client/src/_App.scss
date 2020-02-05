@@ -1,0 +1,264 @@
+@import "./colors";
+@import "./includes";
+
+body, html {
+	background-color: $background-color;
+	font-size: 13px;
+  color: $text-color;
+	line-height: 1.5;
+	margin: 0;
+	font-family: "Rubik", sans-serif;
+	font-weight: 400;
+	height: 100%;
+}
+
+@font-face {
+    font-family: "Rubik";
+    src: url("/fonts/rubik/Rubik-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Rubik";
+    src: url("/fonts/rubik/Rubik-Medium.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+* { /* För att undvika att DIVVEN blir ur proportion */
+	box-sizing: border-box;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+	transition: color 0.2s ease;
+}
+
+.btn, .form-control, .custom-select {
+    border-radius: 0.25rem;
+}
+
+.feather {
+  width: 20px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  margin-left:0;
+  margin-top: -1px;
+}
+
+[data-feather-fill] {
+	fill: currentColor;
+}
+
+.wrapper {
+	background-color: $wrapper-color;
+	padding: 1rem;
+}
+
+.footer {
+	padding: 1.5rem 0;
+	font-size: 0.9em;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.load-offers-more {
+	.feather {
+		height: 16px;
+		margin-right: 0.25rem;
+	}
+}
+
+legend {
+	font-size: 1em;
+	cursor: default;
+}
+
+.form-group, .form-check {
+	margin-bottom: 1em;
+}
+
+.custom-radio .custom-control-label::before, .custom-checkbox .custom-control-label::before {
+	border-radius: 0.25rem;
+  border-color: #eaeff3;
+  top: 0.1em;
+  left: -1.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+}
+
+.custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before, .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+    background-color: #a7bad0;
+    border-color: #a7bad0;
+}
+
+input[disabled="true"], select[disabled="true"] {
+  background-color: #eef3f7;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #769ac1;
+  background-color: #769ac1;
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::after, .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+    top: 0.15em;
+    left: -1.75rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+.custom-control-label::after {
+	background: no-repeat 75%/75% 75%;
+  cursor: pointer;
+}
+
+.custom-switch {
+  padding-left: 2.25rem;
+  label {
+  	padding-left:0.5em;
+  }
+}
+
+.custom-switch .custom-control-label::before {
+  left: -2.25rem;
+  pointer-events: all;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  height: 16px;
+  width: 30px;
+  top: 2px;
+  border-color: #dee1e4;
+}
+
+.custom-switch .custom-control-label::after {
+    top: 4px;
+    left: calc(-2.25rem + 2px);
+    width: calc(1rem - 4px);
+    height: calc(1rem - 4px);
+    background-color: #adb5bd;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    height: 12px;
+	width: 12px;
+}
+
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #fff;
+  -webkit-transform: translateX(0.75rem);
+  transform: translateX(0.75rem);
+  left: calc(-2.25rem + 6px);
+}
+
+.custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  background-color: rgba(0, 123, 255, 0.5);
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #eef3f7;
+}
+
+.alert {
+  @include shadow-sm();
+}
+
+.form-control, .custom-select {
+  background-color: $background-color-focus;
+  border: none;
+
+  &:focus {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+.input-group-text {
+  border-color: #eaeff3;
+}
+
+.page-loading {
+  text-align: center;
+  img {
+    height: 30px;
+  }
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: $background-color;
+}
+
+::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: $background-color;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: $primary-color;
+}
+
+.text-angelic {
+  color: #efc700 !important;
+}
+
+.dropdown-menu {
+  border: none;
+  @include shadow-md();
+  top: 90%;
+
+  .dropdown-item {
+    white-space: normal;
+  }
+
+  .dropdown-header {
+    padding: 0.5em 1em;
+  }
+
+  .dropdown-divider {
+    border-color: #f7fafd;
+  }
+}
+
+.form-control::-webkit-input-placeholder { color: $text-color; }
+.form-control:-moz-placeholder { color: $text-color; }  
+.form-control::-moz-placeholder { color: $text-color; }  
+.form-control:-ms-input-placeholder { color: $text-color; } 
+.form-control::-ms-input-placeholder { color: $text-color; }  
+
+.login-with-steam {
+  background: linear-gradient(to top, #42803a, #4b9241);
+  border-top: 1px solid #57ab4c;
+  padding: 1em 5em;
+  border-radius: 0.25rem;
+  color: #FFF;
+  font-weight: bold;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 0 5px transparent;
+  margin: 0 0.5em;
+
+  &:hover {
+    text-decoration: none;
+    color: #FFF;
+    box-shadow: 0 0 5px #4b9241;
+  }
+}
