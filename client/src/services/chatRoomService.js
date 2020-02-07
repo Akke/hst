@@ -25,8 +25,16 @@ export default {
 		return res.data || [];
 	},
 
-	getUnread: async() => {
+	getUnread: async () => {
 		const res = await axios.get("/api/chatroom/unread");
+		return res.data || [];
+	},
+
+	markAsRead: async (room) => {
+		const res = await axios.post("/api/chatroom/markasread", {
+			room: room
+		});
+		
 		return res.data || [];
 	}
 }

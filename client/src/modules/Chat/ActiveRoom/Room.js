@@ -8,6 +8,12 @@ import io from "socket.io-client";
 import moment from "moment";
 import _ from "underscore";
 import "./_Room.scss";
+import config from "../../../config";
+
+/*
+TODO:
+	- Implement unread count
+*/
 
 const LoadingPage = loadable(() => import("../../../LoadingPage")),
 	RecipientHeader = loadable(() => import("./RecipientHeader/RecipientHeader"));
@@ -21,6 +27,11 @@ export default class Room extends React.Component {
 			originalMessages: [],
 			noMessages: false,
 			inputMessage: "",
+			startDate: null,
+			recipient: null,
+			showNotification: false,
+			notificationTitle: "",
+			notificationBody: ""
 		};
 
 		this.messagesEnd = React.createRef();
@@ -38,10 +49,12 @@ export default class Room extends React.Component {
 		this.setState({
 			messages: groups,
 			originalMessages: messages,
-			noMessages: (groups.length < 1) ? true : false
+			noMessages: (groups.length < 1) ? true : false,
+			startDate: moment.unix(this.props.timestamp).format("YYYY-MM-DD [at] H:mm"),
+			recipient: this.props.recipients.filter(id => id != this.context.user.id)[0]
 		});
 
-		const socket = io("http://localhost:5000");
+		const socket = io(config.api);
 		socket.on(`chat_room_message_${this.props.id}`, (data) => {
 			this.setState({
 				originalMessages: this.state.originalMessages.concat(data)
@@ -50,6 +63,8 @@ export default class Room extends React.Component {
 
 				this.setState({
 					messages: groups
+				}, () => {
+					this.scrollToBottom();
 				});
 			})
 		});
@@ -125,6 +140,8 @@ export default class Room extends React.Component {
 
 	async onMessageSent() {
 		const message = this.state.inputMessage;
+		if(message.length < 1) return;
+
 		this.setState({ inputMessage: "" });
 
 		await chatRoomService.sendMessage(message, this.props.id);
@@ -141,15 +158,15 @@ export default class Room extends React.Component {
 	}
 
 	render() {
-		const conversationStartDate = moment(Object.keys(this.state.messages)[0]).format("YYYY-MM-DD [at] H:mm"),
-			recipientId = this.props.recipients.filter(id => id != this.context.user.id)[0]._id;
+		if(!this.state.startDate || !this.state.recipient._id) return <LoadingPage />;
+
 		return (
 			<div className="chat-window">
-				<RecipientHeader recipient={recipientId} />
+				<RecipientHeader recipient={this.state.recipient._id} />
 
 				<div className="chat-messages">
 					<ul className="message-list">
-						{this.state.messages.length > 0 ? <li className="divider">Conversation started on {conversationStartDate}</li> : null}
+						{this.state.startDate ? <li className="divider">Conversation started on {this.state.startDate}</li> : null}
 
 						{(this.state.messages.length < 1) ? 
 							(this.state.noMessages ? 
@@ -163,7 +180,7 @@ export default class Room extends React.Component {
 				</div>
 
 				<div className="chat-box">
-					<Input type="text" name="message" placeholder="Message Akke" spellCheck="false" onChange={this.onInputChanged} onKeyPress={e => (e.key === "Enter") ? this.onMessageSent() : null} value={this.state.inputMessage} />
+					<Input type="text" name="message" placeholder="Message Akke" spellCheck="false" onChange={this.onInputChanged} onKeyPress={e => (e.key === "Enter") ? this.onMessageSent() : null} value={this.state.inputMessage} autoComplete="off" />
 					<Button type="submit" onClick={this.onMessageSent}>Send</Button>
 				</div>
 			</div>

@@ -10,6 +10,7 @@ import io from "socket.io-client";
 import ContentLoader from "react-content-loader";
 import { MessageSquare, MessageCircle, User } from "react-feather";
 import moment from "moment";
+import config from "../../../config";
 
 export default class Selling extends React.Component {
 	constructor(props) {
@@ -49,7 +50,7 @@ export default class Selling extends React.Component {
     	moment.relativeTimeThreshold("h", 24*26);
         document.title = "herosiege.trade";
 
-        const socket = io("http://localhost:5000");
+        const socket = io(config.api);
 		socket.on("newOffer", (data) => {
 			if(!this.props.autoRefresh) return;
 

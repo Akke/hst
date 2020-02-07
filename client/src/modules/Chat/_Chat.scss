@@ -14,6 +14,15 @@
 	transition: width 0.2s ease;
 	@include shadow-lg();
 
+	.list-empty {
+		padding: 3em;
+	    position: relative;
+	    text-align: center;
+	    font-size: 0.8em;
+	    display: inherit;
+	    opacity: 0.6;
+	}
+
 	.page-loading {
 		margin-top: 1em;
 	}

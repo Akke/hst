@@ -35,7 +35,6 @@ export default class Hero extends React.Component {
 	}
 
 	toggle(e) {
-		// Dropdown is toggled if they click outside of the input, not inside of it.
 		if (this.state.dropdownOpen && (e.target === this.dropdown.current || this.dropdown.current.contains(e.target))) return;
 		
 		this.setState(prevState => ({
@@ -45,8 +44,6 @@ export default class Hero extends React.Component {
 
 	shouldComponentUpdate(nextProps, nextState) {
 		if(this.props.equipment !== nextProps.equipment) {
-			// Prepare to get the order data
-			//todo: dropdown slow cus many items. make it so it displays nothing in the beginning and searching adds result instead of removes.
 			offerService.getAll(0, 0)
 				.then((data) => {
 					equipmentService.getTypes()
