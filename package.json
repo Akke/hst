@@ -47,7 +47,6 @@
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "nodemon": "^2.0.1"
   }
 }
