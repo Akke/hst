@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"hst.equipment_types"}],"uuid":"17a5cfe3329b46a0be98c33519395317"}

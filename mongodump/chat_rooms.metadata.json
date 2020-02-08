@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"hst.chat_rooms"}],"uuid":"6a2c388482c149719ae02d748f9ee845"}
