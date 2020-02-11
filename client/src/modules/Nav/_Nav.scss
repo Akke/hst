@@ -11,25 +11,28 @@
 		.navbar-nav {
 
 			.nav-item {
-				transition: color 0.2s ease, background-color 0.2s ease;
+				transition: background-color 0.2s ease;
 
 				&:hover .nav-link {
-					color: $primary-color;
 					background-color: rgba(255, 255, 255, 0.01);
+					opacity: 1;
 				}
 
 				&.active {
 					.nav-link {
 						color: $primary-color;
+						opacity: 1;
 					}
 				}
 
 				.nav-link {
 					padding: 1.25rem;
-					color: inherit;
+					color: $primary-color;
 					font-weight: bold;
 					transition: color 0.2s ease;
-					border-right: 1px solid #191919;
+					border-right: 1px solid #17181c;
+					opacity: 0.75;
+					transition: opacity 0.2s ease;
 				}
 
 				.feather {

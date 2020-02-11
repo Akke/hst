@@ -8,7 +8,9 @@ import {
 	Col,
 	CustomInput,
 	FormGroup,
-	Input
+	Input,
+	Button,
+	ButtonGroup
 } from "reactstrap";
 
 import { Loader } from "react-feather";
@@ -16,7 +18,7 @@ import { Loader } from "react-feather";
 import "./_List.scss";
 import OfferSorting from "../Sorting/Offer/Offer";
 
-const rowCount = 10; // The amount of items to show in each column
+const rowCount = 20; // The amount of items to show
 
 export default class Offer extends React.Component {
 	constructor(props) {
@@ -128,7 +130,11 @@ export default class Offer extends React.Component {
 
 	async getOffers() {
         let res = await offerService.getAll(0, this.state.limit);
-        this.setState({ offers: res, noMoreResults: false });
+        console.log(res.length)
+        this.setState({
+        	offers: res,
+        	noMoreResults: false
+        });
     }
 
 	loadMoreOffers() {
@@ -140,7 +146,7 @@ export default class Offer extends React.Component {
 	}
 
 	sortOnChanged(e) {
-		this.setState({ sort: e.target.value });
+		this.setState({ sort: e.target.dataset.value });
 	}
 
 	render() {
@@ -154,7 +160,7 @@ export default class Offer extends React.Component {
 							<div>
 								<Row>
 									<Col className="d-flex">
-										<h4 className="mt-2 mb-4">Most Recent Orders</h4>
+										<h4 className="mt-2 mb-4 text-white">Most Recent Orders</h4>
 
 										<FormGroup className="ml-3" check inline>
 					                        <div style={{maxHeight: "1.25rem"}}>
@@ -162,12 +168,10 @@ export default class Offer extends React.Component {
 					                        </div>
 					                    </FormGroup>
 
-					                    <FormGroup className="ml-auto">
-					                    	<Input type="select" onChange={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>
-					                    		<option value="desc">Sort by Newest</option>
-					                    		<option value="asc">Sort by Oldest</option>
-					                    	</Input>
-					                    </FormGroup>
+					                    <ButtonGroup className="sort-button-group">
+											<Button className={this.state.sort == "desc" ? "active" : ""} data-value="desc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Newest</Button>
+											<Button className={this.state.sort == "asc" ? "active" : ""} data-value="asc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Oldest</Button>
+										</ButtonGroup>
 				                    </Col>
 
 				                    <Col lg="3"></Col>
@@ -178,13 +182,17 @@ export default class Offer extends React.Component {
 								<Col>
 									<SellingConsumer pRef={this.selling} data={this.state} allItems={this.props.equipment} loadMoreOffers={this.loadMoreOffers} filterParams={this.props.filter} />
 									
-									{!this.state.loading ? (
-						            	<button className="btn btn-dark w-100 mt-4 mb-4 load-offers-more" style={{"display": (this.state.noMoreResults ? "none" : "block")}} onClick={this.loadMoreOffers}>
+									{!this.state.loading ? !this.state.noMoreResults ? (
+										<button className="btn btn-dark w-100 mt-4 mb-4 load-offers-more" style={{"display": (this.state.noMoreResults ? "none" : "block")}} onClick={this.loadMoreOffers}>
 											{(this.state.loading ? <Loader className="feather" /> : (
 												"Load More"
 											))}
 										</button>
-						            ) : null}
+									) : (
+										<div className="no-more-results">
+											No more offers.
+										</div>
+									) : null}
 								</Col>
 								
 								<News />

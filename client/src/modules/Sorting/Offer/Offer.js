@@ -36,7 +36,8 @@ const SortOptions = (props) => {
                             <Col xs="6">
                                 <FormGroup check inline>
                                     <div>
-                                        <CustomInput type="radio" id="sortModeRadio1" name="sortMode" label="" data-mode="sc" onChange={props.onChange} checked={props.currentMode == "sc" ? true : false} disabled={props.loading} />
+                                        <span className={"sortTitle" + (props.currentMode == "sc" ? " active" : "")}>Softcore</span>
+                                        <CustomInput type="radio" id="sortModeRadio1" name="sortMode" data-mode="sc" onChange={props.onChange} checked={props.currentMode == "sc" ? true : false} disabled={props.loading} />
                                     </div>
                                 </FormGroup>
                             </Col>
@@ -44,7 +45,8 @@ const SortOptions = (props) => {
                             <Col xs="6">
                                 <FormGroup check inline>
                                     <div>
-                                        <CustomInput type="radio" id="sortModeRadio2" name="sortMode" label="" data-mode="hc" onChange={props.onChange} checked={props.currentMode == "hc" ? true : false} disabled={props.loading} />
+                                        <span className={"sortTitle" + (props.currentMode == "hc" ? " active" : "")}>Hardcore</span>
+                                        <CustomInput type="radio" id="sortModeRadio2" name="sortMode" data-mode="hc" onChange={props.onChange} checked={props.currentMode == "hc" ? true : false} disabled={props.loading} />
                                     </div>
                                 </FormGroup>
                             </Col>

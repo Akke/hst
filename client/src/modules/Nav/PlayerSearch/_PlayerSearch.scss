@@ -7,29 +7,29 @@
 		-moz-transition: width 0.2s ease;
 		-webkit-transition: width 0.2s ease;
 		position: relative;
-		border-right: 1px solid #1f1e1c;
+		margin-right: 0.5em;
 
 		input, .dropdown {
 			width:100%;
 		}
 
 		input {
-			padding: 2.15em;
-			border-radius: 0;
-			background-color: #191919;
-			transition: background-color 0.2s ease;
-			color: inherit;
+			padding: 1.5em 1em;
+		    background-color: #15171b;
+		    transition: background-color 0.2s ease;
+		    color: $input-color;
 
 			&:focus {
-				background-color: $wrapper-color;
+				background-color: #121317;
 			}
 		}
 
 		.search-icon {
 			position: absolute;
-			right: 1em;
-			top: 1.4em;
+			right: 0.5em;
+			top: 0.9em;
 			pointer-events: none;
+			color: $input-color;
 		}
 
 		.dropdown-menu-search {

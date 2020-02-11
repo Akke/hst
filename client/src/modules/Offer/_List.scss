@@ -1,180 +1,305 @@
 @import "../../includes";
+@import "../../colors";
 
-.offer-card {
-	border: none;
-	background-color: #242424;
-	flex-direction: row;
-	@include shadow-sm();
-	margin-bottom: 1em;
-	animation: slide-up 0.4s ease;
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle), .btn-group>.btn-group:not(:last-child)>.btn {
+	border-right: 1px solid rgba(255, 255, 255, 0.01) !important;
+}
 
-	.gear-container {
-		padding: 1.25rem 2rem;
-		border-radius: 0.25rem 0 0 0.25rem;
-		border-right: 1px solid rgba(0, 0, 0, 0.03);	    
+.offer-container {
+	.load-offers-more {
+		padding: 1em;
+		background-color: transparent;
+		border: 1px dotted rgba(255, 255, 255, 0.05);
+		color: $text-color;
+		font-weight: bold;
 
-		.equipment-image {
-			width: 7rem;
-			margin: 0 -1rem;
-			padding: 1rem;
-			text-align: center;
-			border-radius: 0.25rem;
-			transition: background-color 0.2s ease, box-shadow 0.2s ease;
-			background: #e9ecef;
-			border: none;
+		&:hover {
+			border-color: rgba($primary-color, .25);
+			color: $primary-color;
+		}
 
-			&:active {
-		    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-		    	border-color: transparent;
-		    }
+		&:active, &:focus {
+			box-shadow: none !important;
+			background-color: $primary-color !important;
+			border-style: solid;
+			color: #FFF;
+		}
 
-		    &.gear-satanic {
-		    	background: #deb0b0;
-				border-color: #d0a2a2;
-
-				&:hover {
-					background-color: #d0a2a2;
-				}
-		    }
-
-		    &.gear-set {
-		    	background: #beefb2;
-		    	border-color: #b2e4a6;
-
-		    	&:hover {
-					background-color: #b2e4a6;
-				}
-		    }
-
-		    &.gear-angelic {
-		    	background: #fff6c8;
-			    border-color: #f9f0c0;
-
-			    &:hover {
-					background-color: #f9f0c0;
-				}
-		    }
-
-			.price-tag {
-				left: 6em;
-				top: 1.25em;
-
-				img {
-					height: 11px;
-				    margin-right: 2px;
-				    margin-bottom: -3px;
-				    margin-top: -4px;
-				}
-			}
-
-			> div {
-				background-repeat: no-repeat;
-				height: 6rem;
-			}
+		.feather {
+			height: 16px;
+			margin-right: 0.25rem;
 		}
 	}
 
-	.card-body {
-		border-radius: 0 0.25rem 0.25rem 0;
-		display: flex;
-		flex-direction: column;
+	.no-more-results {
+		text-align: center;
+		display: block;
+		margin: 2em 0 1em;
+		opacity: 0.5;
+	}
 
-		a {
-			transition: 0.2s color ease;
-			&:hover {
-				text-decoration: none;
+	.sort-button-group {
+		margin-left: auto;
+
+		button {
+			padding: 1.25em;
+		    height: 1.25em;
+		    line-height: 0;
+		    color: $text-color;
+		    background-color: #202126;
+    		border-color: #202126;
+
+    		&.active {
+    			background-color: #202126 !important;
+    			border-color: #202126 !important;
+    			color: $primary-color !important;
+    			font-weight: bold;
+    		}
+
+    		&:hover {
+    			background-color: darken(#202126, 1%);
+    			border-color: darken(#202126, 1%);
+    		}
+
+    		&:active, &:focus {
+    			background-color: darken(#202126, 2%) !important;
+    			border-color: darken(#202126, 2%) !important;
+    			outline: none !important;
+    			color: $text-color !important;
+    			box-shadow: none !important;
+    		}
+		}
+	}
+
+	.offer-card {
+		border: none;
+		background-color: #2c2d32;
+		flex-direction: row;
+		margin-bottom: 1em;
+		animation: slide-up 0.4s ease;
+		flex-wrap: wrap;
+
+		.player-container {
+			padding: 1em;
+			background-color: #2c2d32;
+			border-radius: 0.25rem 0 0 0;
+
+			.player {
+				img {
+					height: 48px;
+					border-radius: 0.25rem;
+					border: 2px skyblue solid;
+				}
+			}
+
+			.flag {
+				height: 32px;
+			    border-radius: 0.25rem;
+			    display: inherit;
+			    margin-top: 1em;
 			}
 		}
 
-		.contact-seller-shortcut {
-			.dropdown {
-				right: 1em;
+		.gear-container {
+			border-radius: 0.25rem 0 0 0.25rem;
+			margin-right: 1em;
+			background: #26272c;
+	    	margin: -1em 1em -1em -1em;   
+	    	transition: background-color 0.2s ease;
 
-				button {
-					font-size: 1.5em;
+	    	&:hover {
+	    		background: #242529;
+	    	} 
+
+			.equipment-image {
+			    width: 6rem;
+			    text-align: center;
+			    border-radius: 0.25rem;
+			    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+			    height: 100%;
+
+				&:active {
+			    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
+			    	border-color: transparent;
+			    }
+
+				.price-tag {
+					left: 6em;
+					top: 1.25em;
+
+					img {
+						height: 11px;
+					    margin-right: 2px;
+					    margin-bottom: -3px;
+					    margin-top: -4px;
+					}
+				}
+
+				> div {
+					background-repeat: no-repeat;
+				    height: 100%;
+				    background-position: center;
 				}
 			}
 		}
 
-		.item-stats {
-			margin: 1rem 0;
-			padding: 0;
-			list-style-type: none;
-		}
-
-		.offer-header {
-			padding-bottom: 1rem;
-		}
-
-		.offer-footer {
-			margin-top: auto;
+		.card-body {
+			border-radius: 0 0.25rem 0 0;
 			display: flex;
-			justify-content: space-between;
-			border-top: 1px solid rgba(0, 0, 0, 0.03);
-			padding: 0.5em;
-			margin: auto -1.5em -1.5em;
-			border-radius: 0 0 0.25rem 0;
+			padding: 1em;
 
 			a {
-				padding: 0.25em 0.5em;
-				transition: background-color 0.2s ease, box-shadow 0.2s ease;
-				border-radius: 0.25rem;
-
+				transition: 0.2s color ease;
 				&:hover {
-			    	background-color: #f3f7fb;
-			    }
-
-				&:active {
-			    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-			    }
+					text-decoration: none;
+				}
 			}
 
-			.price-type {
-				.amount {
-					padding: 0.25em 0.5em;
-				    background-color: transparent;
-				    border-radius: 0.25rem;
-				    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-				    cursor: pointer;
-				    box-shadow: 0px 1px 3px transparent inset;
+			.contact-seller-shortcut {
+				.dropdown {
+					right: 1em;
 
-				    &:hover {
-				    	background-color: #f3f7fb;
-				    	color: #165ba8;
-				    }
-
-				    &:active {
-				    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-				    }
-
-					img {
-						height: 13px;
-						margin-right: 5px;
+					button {
+						font-size: 1.5em;
 					}
 				}
 			}
 
-			.whisper {
-				.feather {
-					height: 12px;
-					width: 12px;
+			.item-stats {
+				margin: 1rem 0;
+				padding: 0;
+				list-style-type: none;
+			}
+
+			.offer-body {
+				width: 100%;
+
+				.offer-inline-header {
+					border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+					padding: 1em;
+					margin: -1em -1em 1em;
+					display: flex;
+					transition: background-color 0.2s ease;
+
+					&:hover {
+					    color: inherit;
+	    				background-color: rgba(255, 255, 255, 0.015);
+					}
+
+					.item-price {
+						margin-left: auto;
+						position: relative;
+						font-weight: bold;
+						color: #FFF;
+
+						&:before {
+							content: "";
+							background-image: url("/images/icons/rubies.png");
+							width: 15px;
+							height: 13px;
+							display: inline-block;
+							background-repeat: no-repeat;
+							background-size: cover;
+							margin: 2px 5px -2px 0;
+						}
+					}
+				}
+
+				.username {
+					color: #FFF;
+					font-weight: bold;
+					text-decoration: none;
+					margin-right: 5px;
+
+					&:hover {
+						color: $primary-color;
+					}
+				}
+
+				.item-details {
+					margin-top: 0.5em;
+
+					.badge-auction {
+						background-color: #c9770f !important;
+					}
+
+					.title {
+						font-weight: bold;
+						text-decoration: none;
+						text-transform: uppercase;
+					}
+
+					.item-properties {
+						list-style-type: none;
+						margin: 0.5em 0 0 0;
+						padding: 0;
+						display: flex;
+
+						li {
+							margin-right: 1em;
+
+							&:last-child {
+								margin-right: 0;
+							}
+
+							> strong {
+								color: #FFF;
+							}
+						}
+					}
 				}
 			}
 		}
-	}
 
-	.item-price {
-		color: #007bff;
-	}
+		.card-footer {
+			background-color: #202126;
+			flex-basis: 100%;
+			border: none;
+			padding: 0;
 
-	.bumped-icon {
-		height: 13px;
-		margin-top: -3px;
-	}
+			> ul {
+				margin: 0;
+				padding: 0;
+				display: flex;
+				list-style-type: none;
 
-	.price {
-		height: 13px;
-		margin-right: 0.125em;
+				> li {
+					padding: 1em;
+					color: #606165;
+					border-right: 1px solid rgba(255, 255, 255, 0.01);
+
+					&.action {
+						cursor: pointer;
+						transition: color 0.2s ease, background-color 0.2s ease;
+
+						&:hover {
+							background-color: rgba(255, 255, 255, 0.01);
+							color: #fff;
+						}
+					}
+
+					&.auction {
+						color: $primary-color;
+						font-weight: bold;
+					}
+
+					&:last-child {
+						border-right: none;
+						border-radius: 0 0 0.25rem 0;
+					}
+
+					> span {
+						padding-left: 5px;
+					}
+
+					.feather {
+						height: 16px;
+					    float: left;
+					    margin-top: 2px;
+					}
+				}
+			}
+		}
 	}
 }
 

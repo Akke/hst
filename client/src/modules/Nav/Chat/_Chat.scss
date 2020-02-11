@@ -2,19 +2,22 @@
 
 .nav-chat {
 	padding: 1.25em;
-	border-left: 1px solid #1f1e1c;
+	border-left: 1px solid #17181c;
 	cursor: pointer;
-	transition: color 0.2s ease, background-color 0.2s ease;
+	color: $primary-color;
+	opacity: 0.75;
+	transition: opacity 0.2s ease, background-color 0.2s ease;
 	position: relative;
 
 	&:hover {
 		color: $primary-color;
-		background-color: rgba(255, 255, 255, 0.02);
+		background-color: rgba(255, 255, 255, 0.01);
+		opacity: 1;
 	}
 
 	&.active {
-		background-color: $primary-color;
-		color: #FFF;
+		background-color: rgba($primary-color, .2);
+		opacity: 1;
 	}
 
 	&:before {

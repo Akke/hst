@@ -8,9 +8,10 @@ import {
 import offerService from "../../../services/offerService";
 import io from "socket.io-client";
 import ContentLoader from "react-content-loader";
-import { MessageSquare, MessageCircle, User } from "react-feather";
+import { MessageSquare, MessageCircle, User, Clock, Hash, AlertTriangle, Zap } from "react-feather";
 import moment from "moment";
 import config from "../../../config";
+import abbreviateNumber from "../../../utils/abbreviateNumber";
 
 export default class Selling extends React.Component {
 	constructor(props) {
@@ -67,56 +68,51 @@ export default class Selling extends React.Component {
 
         return (
         	<Card className="offer-card" key={product._id}>
-        		<div className="gear-container">
-					<Link to={`/items/${item.id}`} className={"equipment-image d-block gear-" + (item.quality_id == "1" ? "satanic" : (item.quality_id == "2" ? "set" : (item.quality_id == "3" ? "angelic" : "")))}>
-				    	<div style={{ backgroundImage: `url("/images/equipment/${item.name}.png")` }}></div>
-				    </Link>
-				</div>
+        		<div className="player-container">
+        			<Link to="/me" className="player">
+        				<img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ca/ca19695d27816439b0bdb89371d20a887f845d3b_full.jpg" />
+        			</Link>
+        			<img src="/images/flags/europe.png" className="flag" />
+        		</div>
 
 				<CardBody>
-					<div className="offer-header mb-1 d-flex">
-			    		<div>
-			    			<Link to={`/items/${item.id}`} className={"font-weight-bold text-decoration-none text-" + (item.quality_id == "1" ? "danger" : (item.quality_id == "2" ? "success" : (item.quality_id == "3" ? "warning" : "")))}>
-			    				{item.name}
+					<div className="gear-container">
+						<Link to={`/items/${item.id}`} className={"equipment-image d-block gear-" + (item.quality_id == "1" ? "satanic" : (item.quality_id == "2" ? "set" : (item.quality_id == "3" ? "angelic" : "")))}>
+					    	<div style={{ backgroundImage: `url("/images/equipment/${item.name}.png")` }}></div>
+					    </Link>
+					</div>
+
+					<div className="offer-body mb-1 d-flex">
+			    		<div className="w-100">
+			    			<Link to={`/items`} className="offer-inline-header">
+			    				<span className="username">Akke</span> wants to sell
+			    				<div className="item-price">{abbreviateNumber(product.price)}</div>
 			    			</Link>
-			    			{product.bidding ? <div className="badge badge-warning ml-2">Auction: Ends {biddingTimeLeft}</div> : ""}
-			    			<div>
-			    				<span className="badge badge-dark mr-1">{product.region}</span>
-			    				<span className="badge badge-light mr-1">Quality: {product.quality}%</span>
-			    				<span className="badge badge-light mr-1">Level: {product.level}/10</span>
-			    				<span className="badge badge-light">Ability: {product.item.ability}</span>
+
+			    			<div className="item-details">
+				    			<Link to={`/items/${item.id}`} className={"title text-" + (item.quality_id == "1" ? "satanic" : (item.quality_id == "2" ? "set" : (item.quality_id == "3" ? "angelic" : "")))}>
+				    				{product.bidding ? <span className="badge badge-warning mr-2 badge-auction">Auction</span> : ""}
+				    				{item.name}
+				    			</Link>
+				    			<div className="item-properties">
+				    				<li><strong>Level:</strong> {product.level}</li>
+				    				<li><strong>Quality:</strong> {product.quality}%</li>
+				    				<li><Zap className="feather" /> <strong>Multishot</strong></li>
+				    			</div>
 			    			</div>
-			    		</div>
-
-			    		<div className="ml-auto">
-			    			<span className="small">Listed {date}</span>
-			    			<span className="badge badge-success ml-2">ONLINE IN-GAME</span>
-			    		</div>
-			    	</div>
-
-			    	<div className="offer-footer small">
-			    		<div className="price-type">
-			    			<span className="amount">
-			    				<img src="/images/icons/rubies.png" alt="Rubies" />
-			    				x <span className="font-weight-bold">{product.price}</span>
-			    			</span>	
-			    		</div>
-
-			    		<div className="whisper ml-2">
-			    			<a href="ok">
-			    				<User className="feather" /> <span className="font-weight-bold">Akke</span> (1120250)
-			    			</a>
-			    		</div>
-
-			    		<div className="whisper ml-auto">
-			    			<a href="ok"><MessageSquare className="feather" data-feather-fill /> Whisper</a>
-			    		</div>
-
-			    		<div className="whisper ml-2">
-			    			<a href="ok"><MessageCircle className="feather" data-feather-fill /> Message</a>
 			    		</div>
 			    	</div>
 				</CardBody>
+
+				<div className="card-footer">
+		    		<ul>
+		    			<li><Clock className="feather" /> <span>{date}</span></li>
+		    			{product.bidding ? <li className="auction"><AlertTriangle className="feather" /> <span>Auctions ends in {biddingTimeLeft}</span></li> : ""}
+		    			<li className="ml-auto"></li>
+		    			<li className="action"><Hash className="feather" /></li>
+		    			<li className="action"><MessageCircle className="feather" /></li>
+		    		</ul>
+		    	</div>
         	</Card>
         );
     };
@@ -130,9 +126,9 @@ export default class Selling extends React.Component {
 	            	<ContentLoader 
 						height={210}
 						width={400}
-						speed={2}
-						primaryColor="#f3f7fb"
-						secondaryColor="#eef3f7"
+						speed={1}
+						primaryColor="#101114"
+						secondaryColor="#0c0c0e"
 					>
 						<rect x="0" y="0" rx="2" ry="2" width="400" height="65" />
 						<rect x="0" y="70" rx="2" ry="2" width="400" height="65" />

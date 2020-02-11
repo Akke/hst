@@ -18,7 +18,8 @@ const Navigation = loadable(() => import("./modules/Nav/Nav")),
     AsyncOffer = loadable(() => import("./modules/Offer/List")),
     AsyncViewItem = loadable(() => import("./modules/Items/View/View")),
     Login = loadable(() => import("./modules/Auth/Login")),
-    Logout = loadable(() => import("./modules/Auth/Logout"));
+    Logout = loadable(() => import("./modules/Auth/Logout")),
+    Footer = loadable(() => import("./modules/Footer/Footer"));
 
 export default class App extends React.Component {
     constructor(props) {
@@ -117,6 +118,8 @@ export default class App extends React.Component {
 
                             <NewOfferButton equipment={this.state.equipment} />
                         </FilterContext.Provider>
+
+                        <Footer />
                     </userContext.Provider>
                 </div>
             </Router>

@@ -1,5 +1,5 @@
 const abbreviateNumber = (num, fixed = 0) => {
-    if (num === null) { return null; } // terminate early
+    /*if (num === null) { return null; } // terminate early
     if (num === 0) { return '0'; } // terminate early
     fixed = (!fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
     var b = (num).toPrecision(2).split("e"), // get power
@@ -7,7 +7,8 @@ const abbreviateNumber = (num, fixed = 0) => {
       c = k < 1 ? num.toFixed(0 + fixed) : (num / Math.pow(10, k * 3) ).toFixed(1 + fixed), // divide by power
       d = c < 0 ? c : Math.abs(c), // enforce -0 is 0
       e = d + ['', 'K', 'M', 'B', 'T'][k]; // append power
-    return e;
+    return e;*/
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 export default abbreviateNumber;

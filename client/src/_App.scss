@@ -10,6 +10,8 @@ body, html {
 	font-family: "Rubik", sans-serif;
 	font-weight: 400;
 	height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 @font-face {
@@ -36,6 +38,9 @@ a {
 	color: inherit;
 	text-decoration: inherit;
 	transition: color 0.2s ease;
+  &:hover {
+    color: $primary-color;
+  }
 }
 
 .btn, .form-control, .custom-select {
@@ -72,13 +77,6 @@ a {
 	}
 }
 
-.load-offers-more {
-	.feather {
-		height: 16px;
-		margin-right: 0.25rem;
-	}
-}
-
 legend {
 	font-size: 1em;
 	cursor: default;
@@ -97,11 +95,16 @@ legend {
   height: 1.25rem;
   max-height: 1.25rem;
   max-width: 1.25rem;
+  box-shadow: none !important;
+}
+
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: #eaeff3;
 }
 
 .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before, .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-    background-color: #a7bad0;
-    border-color: #a7bad0;
+    border-color: lighten($primary-color, 20%);
+  background-color: lighten($primary-color, 20%);
 }
 
 input[disabled="true"], select[disabled="true"] {
@@ -109,8 +112,13 @@ input[disabled="true"], select[disabled="true"] {
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  border-color: #769ac1;
-  background-color: #769ac1;
+  border-color: $primary-color;
+  background-color: $primary-color;
+}
+
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  border-color: lighten($primary-color, 20%);
+  background-color: lighten($primary-color, 20%);
 }
 
 .custom-radio .custom-control-input:checked~.custom-control-label::after, .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
@@ -120,6 +128,7 @@ input[disabled="true"], select[disabled="true"] {
     width: 1.2rem;
     height: 1.2rem;
     cursor: pointer;
+    box-shadow: none !important;
 }
 
 .custom-control-label::after {
@@ -143,6 +152,7 @@ input[disabled="true"], select[disabled="true"] {
   width: 30px;
   top: 2px;
   border-color: #dee1e4;
+  box-shadow: none !important;
 }
 
 .custom-switch .custom-control-label::after {
@@ -183,6 +193,7 @@ input[disabled="true"], select[disabled="true"] {
 .form-control, .custom-select {
   background-color: $background-color-focus;
   border: none;
+  color: $input-color;
 
   &:focus {
     box-shadow: none;
@@ -217,10 +228,6 @@ input[disabled="true"], select[disabled="true"] {
     background-color: $primary-color;
 }
 
-.text-angelic {
-  color: #efc700 !important;
-}
-
 .dropdown-menu {
   border: none;
   @include shadow-md();
@@ -239,11 +246,11 @@ input[disabled="true"], select[disabled="true"] {
   }
 }
 
-.form-control::-webkit-input-placeholder { color: $text-color; }
-.form-control:-moz-placeholder { color: $text-color; }  
-.form-control::-moz-placeholder { color: $text-color; }  
-.form-control:-ms-input-placeholder { color: $text-color; } 
-.form-control::-ms-input-placeholder { color: $text-color; }  
+.form-control::-webkit-input-placeholder { color: $input-color; }
+.form-control:-moz-placeholder { color: $input-color; }  
+.form-control::-moz-placeholder { color: $input-color; }  
+.form-control:-ms-input-placeholder { color: $input-color; } 
+.form-control::-ms-input-placeholder { color: $input-color; }  
 
 .login-with-steam {
   background: linear-gradient(to top, #42803a, #4b9241);
@@ -262,3 +269,25 @@ input[disabled="true"], select[disabled="true"] {
     box-shadow: 0 0 5px #4b9241;
   }
 }
+
+.text-set {
+  color: $set-color;
+  &:hover {
+    color: lighten($set-color, 15%);
+  }
+}
+
+.text-satanic {
+  color: $satanic-color;
+  &:hover {
+    color: lighten($satanic-color, 15%);
+  }
+}
+
+.text-angelic {
+  color: $angelic-color;
+  &:hover {
+    color: lighten($angelic-color, 15%);
+  }
+}
+

@@ -12,7 +12,7 @@ import config from "../../../config";
 
 /*
 TODO:
-	- Implement unread count
+	- Message load limit and scroll up to load more
 */
 
 const LoadingPage = loadable(() => import("../../../LoadingPage")),
