@@ -6,7 +6,6 @@ Setting the system up is very straightforward, although depending on the distrib
 
 ## Cloning the repository
 ```
-cd /home
 git clone https://github.com/SomePanns/hst.git
 ```
 
