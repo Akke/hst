@@ -9,16 +9,16 @@ Setting the system up is very straightforward, although depending on the distrib
 git clone https://github.com/SomePanns/hst.git
 ```
 
-# Installing Dependencies
+## Installing Dependencies
 Because we run both the backend server and the client server in the same base project directory, they both have their own package configurations and dependencies, which is why we have to install both of them manually.
 
-## Server
+### Server
 ```
 cd /hst
 npm install
 ```
 
-## Client
+### Client
 ```
 cd /hst/client
 npm install
