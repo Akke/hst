@@ -24,6 +24,9 @@ cd /hst/client
 npm install
 ```
 
+# Configure for security
+It's important to limit redis and mongo to only accept requests from the HST web server. It's also important to configure mongodb with a username and a password, redis too.
+
 # Running
 For development purposes you can easily run the servers at once in one terminal by executing dev command.
 ```
