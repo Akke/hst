@@ -41,7 +41,11 @@ Afterwards, we need to make sure redis needs a password to connect. Edit the fol
 Find `# requirepass foobared`, uncomment it and change `foobared` to a new, secure password.
 
 ## Setup Redis Cronjob
-To clear all redis keys once every day, we need to make a new file in our `/home` directory called `cleanredisdaily.sh`.
+To clear all redis keys once every day, we need to make a new file in our `/home` directory called `cleanredisdaily.sh`, where you will paste the following code.
+```
+redis-cli KEYS "steam_user*" | xargs redis-cli DEL
+```
+
 Then we need to set it up to run as a cronjob.
 ```
 crontab -e
