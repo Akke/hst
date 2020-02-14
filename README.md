@@ -25,7 +25,37 @@ npm install
 ```
 
 # Configure for security
-It's important to limit redis and mongo to only accept requests from the HST web server. It's also important to configure mongodb with a username and a password, redis too.
+- Set up UFW and allow all necessary ports (e.g. 3000, 5000, 27017, 6379) for the server only.
+- Set up a password and user for MongoDB.
+
+# Install and Setup Redis
+We're using Redis so cache our Steam API responses, specifically for the `getPlayerSummaries` endpoint. To install redis, enter the following command.
+```
+apt-get install redis-server
+```
+
+Afterwards, we need to make sure redis needs a password to connect. Edit the following file.
+```
+/etc/redis/redis.conf
+```
+Find `# requirepass foobared`, uncomment it and change `foobared` to a new, secure password.
+
+## Setup Redis Cronjob
+To clear all redis keys once every day, we need to make a new file in our `/home` directory called `cleanredisdaily.sh`.
+Then we need to set it up to run as a cronjob.
+```
+crontab -e
+```
+Go to the end of the file and add the following.
+```
+0 0 * * * /home/cleanredisfaily.sh
+```
+This will ensure Redis is cleansed every midnight.
+
+To enable cronjobs, enter the following command.
+```
+/etc/init.d/cron start
+```
 
 # Running
 For development purposes you can easily run the servers at once in one terminal by executing dev command.
