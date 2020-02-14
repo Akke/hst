@@ -1,96 +1,96 @@
 {
-	"api": {
-		"errors": {
-			"offer": {
-				"create": {
-					"type": {
-						"invalidType": "Die Auftragsart muss eine Zeichenfolge sein.",
-						"invalidOption": "Die Auftragsart muss entweder kaufen oder verkaufen sein.",
-						"sizeMin": "Die Auftragsart muss gleich oder höher als %s sein.",
-						"sizeMax": "Die Auftragsart hat die Maximallänge von %s überschritten.",
-						"required": "Du musst eine Auftragsart auswählen."
-					},
-					"mode": {
-						"invalidOption": "Der Bestellmodus muss entweder Softcore oder Hardcore sein.",
-						"invalidType": "Der Bestellmodus muss eine Zeichenfolge sein.",
-						"sizeMin": "Der Bestellmodus muss gleich oder höher als %s sein.",
-						"sizeMax": "Der Bestellmodus hat die Maximallänge von %s überschritten.",
-						"required": "Du musst einen Bestellmodus auswählen."
-					},
-					"item": {
-						"required": "Du musst ein Item auswählen.",
-						"value": {
-							"invalidType": "Das Item muss eine Nummer sein.",
-							"invalidNumber": "Das Item muss eine ganze Zahl sein.",
-							"sizeMin": "Das Item muss gleich oder höher als %s sein.",
-							"required": "Du musst ein Item auswählen."
-						},
-						"ability": {
-							"invalidType": "Die Fähigkeit des Items muss eine Nummer sein.",
-							"invalidNumber": "Die Fähigkeit des Items muss eine ganze Zahl sein.",
-							"sizeMin": "Die Fähigkeit des items muss gleich oder höher als %s sein.",
-							"required": "Du musst eine Fähigkeit für deine Waffe auswählen."
-						}
-					},
-					"runes": {
-						"value": {
-							"invalidType": "Rune/Edelstein muss eine Nummer sein.",
-							"invalidNumber": "Rune/Edelstein muss eine ganze Zahl sein.",
-							"sizeMin": "Rune/Edelstein muss gleich oder höher als %s sein.",
-							"required": "Rune/Edelstein kann nicht leer sein."
-						},
-						"amount": {
-							"invalidType": "Die Anzahl von Rune/Edelstein muss eine nummer sein.",
-							"invalidNumber": "Die Anzahl von Rune/Edelstein muss eine ganze Zahl sein.",
-							"sizeMin": "Du musst mindestens %s als Anzahl auswählen.",
-							"sizeMax": "Die Anzahl von Rune/Edelstein hat das Maximum von %s. überschritten"
-						}
-					},
-					"level": {
-						"invalidType": "Das Itemlevel muss eine höhere Zahl sein.",
-						"invalidNumber": "Das Itemlevel muss eine ganze Zahl sein.",
-						"required": "Du musst das itemlevel angeben.",
-						"levelMin": "Das niedrigste Itemlevel ist %s.",
-						"levelMax": "Das höchste Itemlevel ist %s."
-					},
-					"quality": {
-						"invalidType": "Die Itemqualität muss eine nummer sein.",
-						"invalidNumber": "Die Itemqualität muss eine ganze Zahl sein.",
-						"required": "Du musst die Itemqualität angeben.",
-						"qualityMin": "Die niedrigste Itemqualität ist %s.",
-						"qualityMax": "Die höchste Itemqualität ist %s."
-					},
-					"bidding": {
-						"invalidOption": "Die Bietalternative kann nur richtig oder falsch sein."
-					},
-					"buyout": {
-						"invalidType": "Der Direktkaufpreis muss eine Nummer sein.",
-						"invalidNumber": "Der Direktkaufpreis muss eine ganze Zahl sein.",
-						"required": "Du musst einen Direktkaufpreis angeben.",
-						"sizeMin": "Der niedrigste Direktkaufpreis ist %s Rubine.",
-						"sizeMax": "Der höchste Direktkaufpreis ist %s Rubine."
-					},
-					"expires": {
-						"invalidType": "Die Ablaufzeit muss eine Zahl sein.",
-						"invalidNumber": "Die Ablaufzeit muss eine ganze Zahl sein.",
-						"invalidOption": "Die Ablaufzeit muss entweder 6, 12, 24 or 36 Stunden sein.",
-						"required": "Du musst die Ablaufzeit spezifizieren."
-					},
-					"price": {
-						"invalidType": "Der Itempreis muss eine Nummer sein.",
-						"invalidNumber": "Der Itempreis muss eine ganze Zahl sein.",
-						"required": "Du musst den  Itempreis spezifizieren.",
-						"sizeMin": "Der niedrigste Preis ist %s Rubine.",
-						"sizeMax": "Der höchste Preis ist %s Rubine."
-					},
-					"region": {
-						"invalidType": "Die Region muss eine gültige Landesvorwahl sein.",
-						"required": "Du musst die Region spezifizieren.",
-						"sizeMin": "Die Landesvorwahl ist zu kurz. Sie muss mindestens %s Zahlen haben.",
-						"sizeMax": "Es sind zu viele Zahlen in der Landesvorwahl. Sie darf %s Zahlen nicht überschreiten."
-					}
-				}
-			}
-		}
-	}
+    "api": {
+        "errors": {
+            "offer": {
+                "create": {
+                    "type": {
+                        "invalidType": "Die Auftragsart muss eine Zeichenfolge sein.",
+                        "invalidOption": "Die Auftragsart muss entweder kaufen oder verkaufen sein.",
+                        "sizeMin": "Die Auftragsart muss gleich oder höher als %s sein.",
+                        "sizeMax": "Die Auftragsart hat die Maximallänge von %s überschritten.",
+                        "required": "Du musst eine Auftragsart auswählen."
+                    },
+                    "mode": {
+                        "invalidOption": "Der Bestellmodus muss entweder Softcore oder Hardcore sein.",
+                        "invalidType": "Der Bestellmodus muss eine Zeichenfolge sein.",
+                        "sizeMin": "Der Bestellmodus muss gleich oder höher als %s sein.",
+                        "sizeMax": "Der Bestellmodus hat die Maximallänge von %s überschritten.",
+                        "required": "Du musst einen Bestellmodus auswählen."
+                    },
+                    "item": {
+                        "required": "Du musst ein Item auswählen.",
+                        "value": {
+                            "invalidType": "Das Item muss eine Nummer sein.",
+                            "invalidNumber": "Das Item muss eine ganze Zahl sein.",
+                            "sizeMin": "Das Item muss gleich oder höher als %s sein.",
+                            "required": "Du musst ein Item auswählen."
+                        },
+                        "ability": {
+                            "invalidType": "Die Fähigkeit des Items muss eine Nummer sein.",
+                            "invalidNumber": "Die Fähigkeit des Items muss eine ganze Zahl sein.",
+                            "sizeMin": "Die Fähigkeit des items muss gleich oder höher als %s sein.",
+                            "required": "Du musst eine Fähigkeit für deine Waffe auswählen."
+                        }
+                    },
+                    "runes": {
+                        "value": {
+                            "invalidType": "Rune/Edelstein muss eine Nummer sein.",
+                            "invalidNumber": "Rune/Edelstein muss eine ganze Zahl sein.",
+                            "sizeMin": "Rune/Edelstein muss gleich oder höher als %s sein.",
+                            "required": "Rune/Edelstein kann nicht leer sein."
+                        },
+                        "amount": {
+                            "invalidType": "Die Anzahl von Rune/Edelstein muss eine nummer sein.",
+                            "invalidNumber": "Die Anzahl von Rune/Edelstein muss eine ganze Zahl sein.",
+                            "sizeMin": "Du musst mindestens %s als Anzahl auswählen.",
+                            "sizeMax": "Die Anzahl von Rune/Edelstein hat das Maximum von %s. überschritten"
+                        }
+                    },
+                    "level": {
+                        "invalidType": "Das Itemlevel muss eine höhere Zahl sein.",
+                        "invalidNumber": "Das Itemlevel muss eine ganze Zahl sein.",
+                        "required": "Du musst das itemlevel angeben.",
+                        "levelMin": "Das niedrigste Itemlevel ist %s.",
+                        "levelMax": "Das höchste Itemlevel ist %s."
+                    },
+                    "quality": {
+                        "invalidType": "Die Itemqualität muss eine nummer sein.",
+                        "invalidNumber": "Die Itemqualität muss eine ganze Zahl sein.",
+                        "required": "Du musst die Itemqualität angeben.",
+                        "qualityMin": "Die niedrigste Itemqualität ist %s.",
+                        "qualityMax": "Die höchste Itemqualität ist %s."
+                    },
+                    "bidding": {
+                        "invalidOption": "Die Bietalternative kann nur richtig oder falsch sein."
+                    },
+                    "buyout": {
+                        "invalidType": "Der Direktkaufpreis muss eine Nummer sein.",
+                        "invalidNumber": "Der Direktkaufpreis muss eine ganze Zahl sein.",
+                        "required": "Du musst einen Direktkaufpreis angeben.",
+                        "sizeMin": "Der niedrigste Direktkaufpreis ist %s Rubine.",
+                        "sizeMax": "Der höchste Direktkaufpreis ist %s Rubine."
+                    },
+                    "expires": {
+                        "invalidType": "Die Ablaufzeit muss eine Zahl sein.",
+                        "invalidNumber": "Die Ablaufzeit muss eine ganze Zahl sein.",
+                        "invalidOption": "Die Ablaufzeit muss entweder 6, 12, 24 or 36 Stunden sein.",
+                        "required": "Du musst die Ablaufzeit spezifizieren."
+                    },
+                    "price": {
+                        "invalidType": "Der Itempreis muss eine Nummer sein.",
+                        "invalidNumber": "Der Itempreis muss eine ganze Zahl sein.",
+                        "required": "Du musst den  Itempreis spezifizieren.",
+                        "sizeMin": "Der niedrigste Preis ist %s Rubine.",
+                        "sizeMax": "Der höchste Preis ist %s Rubine."
+                    },
+                    "region": {
+                        "invalidType": "Die Region muss eine gültige Landesvorwahl sein.",
+                        "required": "Du musst die Region spezifizieren.",
+                        "sizeMin": "Die Landesvorwahl ist zu kurz. Sie muss mindestens %s Zahlen haben.",
+                        "sizeMax": "Es sind zu viele Zahlen in der Landesvorwahl. Sie darf %s Zahlen nicht überschreiten."
+                    }
+                }
+            }
+        }
+    }
 }

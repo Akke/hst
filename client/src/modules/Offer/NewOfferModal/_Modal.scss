@@ -1,97 +1,97 @@
 @import "../../../includes";
 
 .modal-new-offer {
-	.modal-content {
-		border: none;
-		@include shadow-lg();
+    .modal-content {
+        border: none;
+        @include shadow-lg();
 
-		form {
-			.biddingDisabled {
-				opacity: 0.5;
-			}
-		}
+        form {
+            .biddingDisabled {
+                opacity: 0.5;
+            }
+        }
 
-		.modal-header {
-			border: none;
-			@include shadow-sm();
-			z-index: 1;
+        .modal-header {
+            border: none;
+            @include shadow-sm();
+            z-index: 1;
 
-			.close {
-				margin: -3px;
-				text-shadow: none;
-				height: 2em;
-				font-size: 1em;
-				padding: 0rem 1rem;
-				background-color: auto;
-				transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+            .close {
+                margin: -3px;
+                text-shadow: none;
+                height: 2em;
+                font-size: 1em;
+                padding: 0rem 1rem;
+                background-color: auto;
+                transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 
-				&:hover {
-					color: #FFF;
-				}
-			}
+                &:hover {
+                    color: #FFF;
+                }
+            }
 
-			.modal-title {
-				font-size: 1.05em;
-				font-weight: bold;
-			}
-		}
+            .modal-title {
+                font-size: 1.05em;
+                font-weight: bold;
+            }
+        }
 
-		.modal-body {
-			background-color: rgba(0, 0, 0, 0.02);
+        .modal-body {
+            background-color: rgba(0, 0, 0, 0.02);
 
-			.new-offer-image-thumbnail {
-				width: 5rem;
-				text-align: center;
-				margin-left: auto;
-				background: rgb(233, 236, 239);
-				width: 10rem;
-				height: 10rem;
-				border-radius: 50%;
-				position: relative;
-				border: 1px solid #ced4da;
+            .new-offer-image-thumbnail {
+                width: 5rem;
+                text-align: center;
+                margin-left: auto;
+                background: rgb(233, 236, 239);
+                width: 10rem;
+                height: 10rem;
+                border-radius: 50%;
+                position: relative;
+                border: 1px solid #ced4da;
 
-				> div {
-				    height: 8rem;
-				    width: 6rem;
-				    background-repeat: no-repeat;
-				    position: absolute;
-				    left: 50%;
-				    top: 50%;
-				    transform: translate(-50%, -50%);
-				    background-position: 50% 200%;
-				}
-			}
+                > div {
+                    height: 8rem;
+                    width: 6rem;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    background-position: 50% 200%;
+                }
+            }
 
-			.thumbnail-satanic {
-				background: #deb0b0;
-				border-color: #d0a2a2;
-			}
+            .thumbnail-satanic {
+                background: #deb0b0;
+                border-color: #d0a2a2;
+            }
 
-			.thumbnail-set {
-				background: #beefb2;
-				border-color: #b2e4a6;
-			}
+            .thumbnail-set {
+                background: #beefb2;
+                border-color: #b2e4a6;
+            }
 
-			.thumbnail-angelic {
-			    background: #fff6c8;
-			    border-color: #f9f0c0;
-			}
-		}
+            .thumbnail-angelic {
+                background: #fff6c8;
+                border-color: #f9f0c0;
+            }
+        }
 
-		.modal-footer {
-			border: none;
-		}
-	}
+        .modal-footer {
+            border: none;
+        }
+    }
 }
 
 .basic-multi-select {
-	img.inlineItem {
-		width: 15px;
-		margin-right: 1em;
-	}
+    img.inlineItem {
+        width: 15px;
+        margin-right: 1em;
+    }
 
-	img.inlineItemLabel {
-		width: 10px;
-		margin-right: 0.5em;
-	}
+    img.inlineItemLabel {
+        width: 10px;
+        margin-right: 0.5em;
+    }
 }

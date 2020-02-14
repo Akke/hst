@@ -2,72 +2,72 @@
 @import "../../includes";
 
 .navbar {
-	background: $background-color;
-	padding: 0;
-	z-index: 2;
-	transition: width 0.2s ease;
-	
-	.navbar-collapse {
-		.navbar-nav {
+    background: $background-color;
+    padding: 0;
+    z-index: 2;
+    transition: width 0.2s ease;
+    
+    .navbar-collapse {
+        .navbar-nav {
 
-			.nav-item {
-				transition: background-color 0.2s ease;
+            .nav-item {
+                transition: background-color 0.2s ease;
 
-				&:hover .nav-link {
-					background-color: rgba(255, 255, 255, 0.01);
-					opacity: 1;
-				}
+                &:hover .nav-link {
+                    background-color: rgba(255, 255, 255, 0.01);
+                    opacity: 1;
+                }
 
-				&.active {
-					.nav-link {
-						color: $primary-color;
-						opacity: 1;
-					}
-				}
+                &.active {
+                    .nav-link {
+                        color: $primary-color;
+                        opacity: 1;
+                    }
+                }
 
-				.nav-link {
-					padding: 1.25rem;
-					color: $primary-color;
-					font-weight: bold;
-					transition: color 0.2s ease;
-					border-right: 1px solid #17181c;
-					opacity: 0.75;
-					transition: opacity 0.2s ease;
-				}
+                .nav-link {
+                    padding: 1.25rem;
+                    color: $primary-color;
+                    font-weight: bold;
+                    transition: color 0.2s ease;
+                    border-right: 1px solid #17181c;
+                    opacity: 0.75;
+                    transition: opacity 0.2s ease;
+                }
 
-				.feather {
-					margin-right: 0.25em;
-				}
-			}
+                .feather {
+                    margin-right: 0.25em;
+                }
+            }
 
-			.show {
-				.user-area {
-					
-				}
-			}
-		}	
+            .show {
+                .user-area {
+                    
+                }
+            }
+        }   
 
-		.nav-system-icon {
-			button {
-				position: relative;
+        .nav-system-icon {
+            button {
+                position: relative;
 
-				.badge {
-					right: 0;
-					position: absolute;
-				}
-			}
-		}
-	}
+                .badge {
+                    right: 0;
+                    position: absolute;
+                }
+            }
+        }
+    }
 
-	.svgLogo {
-		width: 30px;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		top: 1em;
-	}
+    .svgLogo {
+        width: 30px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 1em;
+    }
 
-	.slogin {
-		border-radius: 0.25rem;
-	}
+    .slogin {
+        border-radius: 0.25rem;
+    }
 }

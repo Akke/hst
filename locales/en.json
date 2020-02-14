@@ -1,108 +1,108 @@
 {
-	"api": {
-		"errors": {
-			"offer": {
-				"create": {
-					"type": {
-						"invalidType": "Order Type must be a string.",
-						"invalidOption": "Order Type must be either selling or buying.",
-						"sizeMin": "Order Type must be equal to or greater than %s.",
-						"sizeMax": "Order Type has exceeded the maximum length of %s.",
-						"required": "You must select an Order Type."
-					},
-					"mode": {
-						"invalidOption": "Order Mode must be either softcore or hardcore.",
-						"invalidType": "Order Mode must be a string.",
-						"sizeMin": "Order Mode must be equal to or greater than %s.",
-						"sizeMax": "Order Mode has exceeded the maximum length of %s.",
-						"required": "You must select an Order Mode."
-					},
-					"item": {
-						"required": "You must select an item.",
-						"value": {
-							"invalidType": "Item must be a number.",
-							"invalidNumber": "Item must be an integer.",
-							"sizeMin": "Item must be equal to or greater than %s.",
-							"required": "You must select an item."
-						},
-						"ability": {
-							"invalidType": "Item ability must be a number.",
-							"invalidNumber": "Item ability must be an integer.",
-							"sizeMin": "Item ability must be equal to or greater than %s.",
-							"required": "You need to select an item ability for your weapon."
-						}
-					},
-					"runes": {
-						"value": {
-							"invalidType": "Rune/Gem must be a number.",
-							"invalidNumber": "Rune/Gem must be an integer.",
-							"sizeMin": "Rune/Gem must be equal to or greater than %s.",
-							"required": "Rune/Gem can not be empty."
-						},
-						"amount": {
-							"invalidType": "Rune/Gem amount must be a number.",
-							"invalidNumber": "Rune/Gem amount must be an integer.",
-							"sizeMin": "You need to select at least %s as the amount.",
-							"sizeMax": "Rune/Gem has exceeded the maximum amount of %s."
-						}
-					},
-					"level": {
-						"invalidType": "Item level must be a number.",
-						"invalidNumber": "Item level must be an integer.",
-						"required": "You must enter the item level.",
-						"levelMin": "The lowest possible level is %s.",
-						"levelMax": "The highest possible level is %s."
-					},
-					"quality": {
-						"invalidType": "Item quality must be a number.",
-						"invalidNumber": "Item quality must be an integer.",
-						"required": "You must enter the item quality.",
-						"qualityMin": "The lowest possible quality is %s.",
-						"qualityMax": "The highest possible quality is %s."
-					},
-					"bidding": {
-						"invalidOption": "The Bidding alternative can only be true or false.",
-						"notAllowed": "You can not enable biddings on orders you wish to buy."
-					},
-					"buyout": {
-						"invalidType": "Item buyout price must be a number.",
-						"invalidNumber": "Item buyout price must be an integer.",
-						"required": "You must enter the item buyout price.",
-						"sizeMin": "The lowest possible buyout price is %s rubies.",
-						"sizeMax": "The highest possible buyout is price %s rubies."
-					},
-					"expires": {
-						"invalidType": "The expiration time must be a number.",
-						"invalidNumber": "The expiration time must be an integer.",
-						"invalidOption": "The Expiration time must be either 6, 12, 24 or 36 hours.",
-						"required": "You must specify the expiration time."
-					},
-					"price": {
-						"invalidType": "Item price must be a number.",
-						"invalidNumber": "Item price must be an integer.",
-						"required": "You must specify the item price.",
-						"sizeMin": "The lowest possible price is %s rubies.",
-						"sizeMax": "The highest possible price is %s rubies."
-					},
-					"region": {
-						"invalidType": "The region must be a valid country code.",
-						"required": "You must specify the region.",
-						"sizeMin": "The region code is too short. It must be at least %s characters.",
-						"sizeMax": "Too many characters in the region code. It must not exceed %s characters."
-					}
-				}
-			},
+    "api": {
+        "errors": {
+            "offer": {
+                "create": {
+                    "type": {
+                        "invalidType": "Order Type must be a string.",
+                        "invalidOption": "Order Type must be either selling or buying.",
+                        "sizeMin": "Order Type must be equal to or greater than %s.",
+                        "sizeMax": "Order Type has exceeded the maximum length of %s.",
+                        "required": "You must select an Order Type."
+                    },
+                    "mode": {
+                        "invalidOption": "Order Mode must be either softcore or hardcore.",
+                        "invalidType": "Order Mode must be a string.",
+                        "sizeMin": "Order Mode must be equal to or greater than %s.",
+                        "sizeMax": "Order Mode has exceeded the maximum length of %s.",
+                        "required": "You must select an Order Mode."
+                    },
+                    "item": {
+                        "required": "You must select an item.",
+                        "value": {
+                            "invalidType": "Item must be a number.",
+                            "invalidNumber": "Item must be an integer.",
+                            "sizeMin": "Item must be equal to or greater than %s.",
+                            "required": "You must select an item."
+                        },
+                        "ability": {
+                            "invalidType": "Item ability must be a number.",
+                            "invalidNumber": "Item ability must be an integer.",
+                            "sizeMin": "Item ability must be equal to or greater than %s.",
+                            "required": "You need to select an item ability for your weapon."
+                        }
+                    },
+                    "runes": {
+                        "value": {
+                            "invalidType": "Rune/Gem must be a number.",
+                            "invalidNumber": "Rune/Gem must be an integer.",
+                            "sizeMin": "Rune/Gem must be equal to or greater than %s.",
+                            "required": "Rune/Gem can not be empty."
+                        },
+                        "amount": {
+                            "invalidType": "Rune/Gem amount must be a number.",
+                            "invalidNumber": "Rune/Gem amount must be an integer.",
+                            "sizeMin": "You need to select at least %s as the amount.",
+                            "sizeMax": "Rune/Gem has exceeded the maximum amount of %s."
+                        }
+                    },
+                    "level": {
+                        "invalidType": "Item level must be a number.",
+                        "invalidNumber": "Item level must be an integer.",
+                        "required": "You must enter the item level.",
+                        "levelMin": "The lowest possible level is %s.",
+                        "levelMax": "The highest possible level is %s."
+                    },
+                    "quality": {
+                        "invalidType": "Item quality must be a number.",
+                        "invalidNumber": "Item quality must be an integer.",
+                        "required": "You must enter the item quality.",
+                        "qualityMin": "The lowest possible quality is %s.",
+                        "qualityMax": "The highest possible quality is %s."
+                    },
+                    "bidding": {
+                        "invalidOption": "The Bidding alternative can only be true or false.",
+                        "notAllowed": "You can not enable biddings on orders you wish to buy."
+                    },
+                    "buyout": {
+                        "invalidType": "Item buyout price must be a number.",
+                        "invalidNumber": "Item buyout price must be an integer.",
+                        "required": "You must enter the item buyout price.",
+                        "sizeMin": "The lowest possible buyout price is %s rubies.",
+                        "sizeMax": "The highest possible buyout is price %s rubies."
+                    },
+                    "expires": {
+                        "invalidType": "The expiration time must be a number.",
+                        "invalidNumber": "The expiration time must be an integer.",
+                        "invalidOption": "The Expiration time must be either 6, 12, 24 or 36 hours.",
+                        "required": "You must specify the expiration time."
+                    },
+                    "price": {
+                        "invalidType": "Item price must be a number.",
+                        "invalidNumber": "Item price must be an integer.",
+                        "required": "You must specify the item price.",
+                        "sizeMin": "The lowest possible price is %s rubies.",
+                        "sizeMax": "The highest possible price is %s rubies."
+                    },
+                    "region": {
+                        "invalidType": "The region must be a valid country code.",
+                        "required": "You must specify the region.",
+                        "sizeMin": "The region code is too short. It must be at least %s characters.",
+                        "sizeMax": "Too many characters in the region code. It must not exceed %s characters."
+                    }
+                }
+            },
 
-			"chat" : {
-				"message": {
-					"input": {
-						"invalidType": "Chat message must be a string.",
-						"sizeMin": "Chat message must be at least %s characters.",
-						"sizeMax": "Chat message can't be longer than %s characters.",
-						"required": "Chat message can't be left empty."
-					}
-				}
-			}
-		}
-	}
+            "chat" : {
+                "message": {
+                    "input": {
+                        "invalidType": "Chat message must be a string.",
+                        "sizeMin": "Chat message must be at least %s characters.",
+                        "sizeMax": "Chat message can't be longer than %s characters.",
+                        "required": "Chat message can't be left empty."
+                    }
+                }
+            }
+        }
+    }
 }

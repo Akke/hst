@@ -2,42 +2,42 @@
 @import "../../../colors";
 
 .new-offer {
-	text-align: center;
-	display: inline-block;
-	cursor: pointer;
-	position: fixed;
-	bottom: 1rem;
-	right: 3rem;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem;
 
-	&:hover {
-		.new-offer-button {
-			background-color: lighten($primary-color, 5%);
-		}
+    &:hover {
+        .new-offer-button {
+            background-color: lighten($primary-color, 5%);
+        }
 
-		span {
-			color: lighten($primary-color, 5%) !important;
-		}
-	}
+        span {
+            color: lighten($primary-color, 5%) !important;
+        }
+    }
 
-	.new-offer-button {
-		border-radius: 50%;
-		width: 5rem;
-		height: 5rem;
-		background-color: $primary-color;
-		border: none;
-		@include shadow-lg();
+    .new-offer-button {
+        border-radius: 50%;
+        width: 5rem;
+        height: 5rem;
+        background-color: $primary-color;
+        border: none;
+        @include shadow-lg();
 
-		.feather {
-			transform: scale(2);
-		}
-	}
+        .feather {
+            transform: scale(2);
+        }
+    }
 
-	span {
-		display: block;
-		margin-top: 0.5em;
-		font-weight: bold;
-		text-transform: uppercase;
-		font-size: 1.1em;
-		color: $primary-color !important;
-	}
+    span {
+        display: block;
+        margin-top: 0.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.1em;
+        color: $primary-color !important;
+    }
 }

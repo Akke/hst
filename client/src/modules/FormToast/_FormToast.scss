@@ -1,66 +1,66 @@
 @import "../../includes";
 
 .site-alert-danger {
-	.toast-header {
-		color: #d65555;
+    .toast-header {
+        color: #d65555;
 
-		&:before {
-			background-image: url("/images/warn.svg");
-		}
-	}
+        &:before {
+            background-image: url("/images/warn.svg");
+        }
+    }
 }
 
 .site-alert-success {
-	.toast-header {
-		color: #5ccc2d;
+    .toast-header {
+        color: #5ccc2d;
 
-		&:before {
-			background-image: url("/images/check.svg");
-		}
-	}
+        &:before {
+            background-image: url("/images/check.svg");
+        }
+    }
 }
 
 .site-alert {
-	cursor: pointer;
-	border: none;
-	position: fixed;
-	bottom: 1rem;
-	right: 2rem;
-	z-index: 1000051;
-	min-width: 20rem;
-	border-radius: 0.25rem;
-	@include shadow-lg();
-	transform: translateX(-50%);
-	left: 50%;
+    cursor: pointer;
+    border: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    z-index: 1000051;
+    min-width: 20rem;
+    border-radius: 0.25rem;
+    @include shadow-lg();
+    transform: translateX(-50%);
+    left: 50%;
 
-	.toast-header {
-		position: relative;
-		padding: 0.5rem;
-		border: none;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-		&:before {
-			content: "";
-			width: 20px;
-		    height: 20px;
-		    position: absolute;
-		    background-repeat: no-repeat;
-		    right: 0.5rem;
-		}
-	}
+    .toast-header {
+        position: relative;
+        padding: 0.5rem;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        &:before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-repeat: no-repeat;
+            right: 0.5rem;
+        }
+    }
 
-	.toast-body {
-		background-color: rgba(0, 0, 0, 0.02);
-		background-color: #FFF !important;
-		border-radius: 0.25rem;
+    .toast-body {
+        background-color: rgba(0, 0, 0, 0.02);
+        background-color: #FFF !important;
+        border-radius: 0.25rem;
 
-		&:first-letter {
-			text-transform: uppercase;
-		}
-	}
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
 
-	button.close {
-		font-size: 1em;
-		transform: scale(2);
-		padding-right: 0.25em;
-	}
+    button.close {
+        font-size: 1em;
+        transform: scale(2);
+        padding-right: 0.25em;
+    }
 }

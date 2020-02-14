@@ -2,14 +2,14 @@
 @import "./includes";
 
 body, html {
-	background-color: $background-color;
-	font-size: 13px;
+  background-color: $background-color;
+  font-size: 13px;
   color: $text-color;
-	line-height: 1.5;
-	margin: 0;
-	font-family: "Rubik", sans-serif;
-	font-weight: 400;
-	height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  height: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -31,13 +31,13 @@ body, html {
 }
 
 * { /* För att undvika att DIVVEN blir ur proportion */
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
-	color: inherit;
-	text-decoration: inherit;
-	transition: color 0.2s ease;
+  color: inherit;
+  text-decoration: inherit;
+  transition: color 0.2s ease;
   &:hover {
     color: $primary-color;
   }
@@ -60,34 +60,34 @@ a {
 }
 
 [data-feather-fill] {
-	fill: currentColor;
+  fill: currentColor;
 }
 
 .wrapper {
-	background-color: $wrapper-color;
-	padding: 1rem;
+  background-color: $wrapper-color;
+  padding: 1rem;
 }
 
 .footer {
-	padding: 1.5rem 0;
-	font-size: 0.9em;
+  padding: 1.5rem 0;
+  font-size: 0.9em;
 
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
 
 legend {
-	font-size: 1em;
-	cursor: default;
+  font-size: 1em;
+  cursor: default;
 }
 
 .form-group, .form-check {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .custom-radio .custom-control-label::before, .custom-checkbox .custom-control-label::before {
-	border-radius: 0.25rem;
+  border-radius: 0.25rem;
   border-color: #eaeff3;
   top: 0.1em;
   left: -1.75rem;
@@ -132,14 +132,14 @@ input[disabled="true"], select[disabled="true"] {
 }
 
 .custom-control-label::after {
-	background: no-repeat 75%/75% 75%;
+  background: no-repeat 75%/75% 75%;
   cursor: pointer;
 }
 
 .custom-switch {
   padding-left: 2.25rem;
   label {
-  	padding-left:0.5em;
+    padding-left:0.5em;
   }
 }
 
@@ -167,7 +167,7 @@ input[disabled="true"], select[disabled="true"] {
     transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
     height: 12px;
-	width: 12px;
+  width: 12px;
 }
 
 

@@ -1,68 +1,68 @@
 @import "../../../colors";
 
 .navbar {
-	.nav-search {
-		width: 25rem;
-		transition: width 0.2s ease;
-		-moz-transition: width 0.2s ease;
-		-webkit-transition: width 0.2s ease;
-		position: relative;
-		margin-right: 0.5em;
+    .nav-search {
+        width: 25rem;
+        transition: width 0.2s ease;
+        -moz-transition: width 0.2s ease;
+        -webkit-transition: width 0.2s ease;
+        position: relative;
+        margin-right: 0.5em;
 
-		input, .dropdown {
-			width:100%;
-		}
+        input, .dropdown {
+            width:100%;
+        }
 
-		input {
-			padding: 1.5em 1em;
-		    background-color: #15171b;
-		    transition: background-color 0.2s ease;
-		    color: $input-color;
+        input {
+            padding: 1.5em 1em;
+            background-color: #15171b;
+            transition: background-color 0.2s ease;
+            color: $input-color;
 
-			&:focus {
-				background-color: #121317;
-			}
-		}
+            &:focus {
+                background-color: #121317;
+            }
+        }
 
-		.search-icon {
-			position: absolute;
-			right: 0.5em;
-			top: 0.9em;
-			pointer-events: none;
-			color: $input-color;
-		}
+        .search-icon {
+            position: absolute;
+            right: 0.5em;
+            top: 0.9em;
+            pointer-events: none;
+            color: $input-color;
+        }
 
-		.dropdown-menu-search {
-			width: 100%;
+        .dropdown-menu-search {
+            width: 100%;
 
-			.search-users {
-				display: flex;
-				padding: 0.5em 1em;
+            .search-users {
+                display: flex;
+                padding: 0.5em 1em;
 
-				img {
-					width: 33px;
-					height: 33px;
-					border-radius: 0.25rem;
-					margin-right: 0.75em;
-				}
+                img {
+                    width: 33px;
+                    height: 33px;
+                    border-radius: 0.25rem;
+                    margin-right: 0.75em;
+                }
 
-				.username {
-					font-weight: bold;
-				}
+                .username {
+                    font-weight: bold;
+                }
 
-				.user-data {
-					width: 100%;
+                .user-data {
+                    width: 100%;
 
-					.user-text {
-						display: flex;
-						justify-content: space-between;
+                    .user-text {
+                        display: flex;
+                        justify-content: space-between;
 
-						.badge {
-							line-height: 1.5;
-						}
-					}
-				}
-			}
-		}
-	}
+                        .badge {
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

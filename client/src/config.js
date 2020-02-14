@@ -1,3 +1,4 @@
 module.exports = {
-	"api": "http://localhost:5000"
+    "api": "http://localhost:5000",
+    "heroSiegeAppId": 269210
 };

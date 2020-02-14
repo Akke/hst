@@ -1,32 +1,32 @@
 .dropdown-menu-search {
-	width: 100%;
+    width: 100%;
 
-	.search-users {
-		display: flex;
-		padding: 0.5em 1em;
+    .search-users {
+        display: flex;
+        padding: 0.5em 1em;
 
-		img {
-			width: 33px;
-			height: 33px;
-			border-radius: 0.25rem;
-			margin-right: 0.75em;
-		}
+        img {
+            width: 33px;
+            height: 33px;
+            border-radius: 0.25rem;
+            margin-right: 0.75em;
+        }
 
-		.username {
-			font-weight: bold;
-		}
+        .username {
+            font-weight: bold;
+        }
 
-		.user-data {
-			width: 100%;
+        .user-data {
+            width: 100%;
 
-			.user-text {
-				display: flex;
-				justify-content: space-between;
+            .user-text {
+                display: flex;
+                justify-content: space-between;
 
-				.badge {
-					line-height: 1.5;
-				}
-			}
-		}
-	}
+                .badge {
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
 }

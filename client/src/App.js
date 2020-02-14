@@ -49,8 +49,6 @@ export default class App extends React.Component {
             );
         };
 
-        // State also contains the updater function so it will
-        // be passed down into the context provider
         this.state = {
             filter: filter,
             updateFilter: this.updateFilter,

@@ -1,85 +1,85 @@
 @import "../../../colors";
 
 .navbar {
-	.user-area-container {
-		list-style-type: none;
+    .user-area-container {
+        list-style-type: none;
 
-		.dropdown {
-			.dropdown-menu {
-				width: 100%;
-				top: 100%;
-			}
-		}
+        .dropdown {
+            .dropdown-menu {
+                width: 100%;
+                top: 100%;
+            }
+        }
 
-		> li > a {
-			&:after {
-				display: none;
-			}
+        > li > a {
+            &:after {
+                display: none;
+            }
 
-			padding: 0.5rem;
-		}
+            padding: 0.5rem;
+        }
 
-		&.active {
-			.user-area {
-				background-color: rgba($primary-color, .2) !important;
-				color: $primary-color;
-				opacity: 1;
-			}
-		}
+        &.active {
+            .user-area {
+                background-color: rgba($primary-color, .2) !important;
+                color: $primary-color;
+                opacity: 1;
+            }
+        }
 
-		.user-area {
-			display: flex;
-		    width: 15rem;
-		    margin: -0.5em;
-		    padding: 0.75em;
-		    opacity: 0.75;
-		    color: $primary-color;
-			transition: opacity 0.2s ease, background-color 0.2s ease;
+        .user-area {
+            display: flex;
+            width: 15rem;
+            margin: -0.5em;
+            padding: 0.75em;
+            opacity: 0.75;
+            color: $primary-color;
+            transition: opacity 0.2s ease, background-color 0.2s ease;
 
-			&:hover {
-				background-color: rgba(255, 255, 255, 0.01);
-				color: $primary-color;
-				opacity: 1;
-			}
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.01);
+                color: $primary-color;
+                opacity: 1;
+            }
 
-			&:active {
-				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-			}
+            &:active {
+                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
+            }
 
-			.username {
-				line-height: 2.5;
-				.nickname {
-					font-weight: bold;
-				}
+            .username {
+                line-height: 2.5;
+                .nickname {
+                    font-weight: bold;
+                }
 
-				.reputation {
-					font-weight: 400;
+                .reputation {
+                    font-weight: 400;
 
-					.feather {
-						height: 13px;
-						margin-right: -0.25em;
-						margin-left: -0.25em;
-					}
-				}
-			}
+                    .feather {
+                        height: 13px;
+                        margin-right: -0.25em;
+                        margin-left: -0.25em;
+                    }
+                }
+            }
 
-			.expand-down {
-				width: 0; 
-				height: 0; 
-				border-left: 4px solid transparent;
-				border-right: 4px solid transparent;
-				border-top: 4px solid currentColor;
-				margin-left: auto;
-				margin-top: 1.25em;
-			}
+            .expand-down {
+                width: 0; 
+                height: 0; 
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 4px solid currentColor;
+                margin-left: auto;
+                margin-top: 1.25em;
+            }
 
-			img {
-			    width: 31px;
-			    height: 31px;
-			    border-radius: 50%;
-			    margin-right: 0.75em;
-			    margin-top: 0.1em;
-			}
-		}
-	}
+            img {
+                width: 31px;
+                height: 31px;
+                border-radius: 50%;
+                margin-right: 0.75em;
+                margin-top: 0.1em;
+            }
+        }
+    }
 }

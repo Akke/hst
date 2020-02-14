@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const offerSchema = new Schema({
+    user: String,
     type: String,
     mode: String,
     item: {

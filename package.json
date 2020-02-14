@@ -15,38 +15,23 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^16.1.8",
-    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.4.1",
     "cookie-parser": "^1.4.4",
-    "create-react-app": "^3.3.0",
-    "csurf": "^1.10.0",
-    "datalize": "^0.3.4",
+    "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.17.0",
-    "http-proxy-middleware": "^0.20.0",
-    "i18n": "^0.8.4",
-    "joi": "^14.3.1",
+    "i18n": "^0.8.5",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.13",
-    "passport": "^0.4.1",
-    "passport-steam": "^1.0.12",
-    "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-dom": "^16.12.0",
-    "react-i18next": "^11.2.6",
-    "reactstrap": "^8.2.0",
+    "mongoose": "^5.8.11",
+    "node-sass": "^4.13.1",
+    "redis": "^3.0.2",
     "socket.io": "^2.3.0",
-    "steam-login": "^0.1.7",
-    "webpack": "4.41.2",
-    "webpack-log": "^3.0.1",
-    "websocket": "^1.0.31",
-    "ws": "^7.2.0"
+    "steam-login": "^0.1.7"
   },
   "devDependencies": {
-    "concurrently": "^5.0.0",
-    "nodemon": "^2.0.1"
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
   }
 }

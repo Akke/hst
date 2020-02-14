@@ -1,164 +1,164 @@
 @import "../../../includes";
 
 .item-view-header {
-	display: flex;
+    display: flex;
 
-	.gear-container {
-		border-radius: 0.25rem 0 0 0.25rem;	    
+    .gear-container {
+        border-radius: 0.25rem 0 0 0.25rem;     
 
-		.equipment-image {
-			width: 7rem;
-			padding: 1rem;
-			margin-right: 1em;
-			text-align: center;
-			border-radius: 0.25rem;
-			transition: background-color 0.2s ease, box-shadow 0.2s ease;
-			background: #e9ecef;
-			border: none;
+        .equipment-image {
+            width: 7rem;
+            padding: 1rem;
+            margin-right: 1em;
+            text-align: center;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            background: #e9ecef;
+            border: none;
 
-			&:active {
-		    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-		    	border-color: transparent;
-		    }
+            &:active {
+                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
+                border-color: transparent;
+            }
 
-		    &.gear-satanic {
-		    	background: #deb0b0;
-				border-color: #d0a2a2;
+            &.gear-satanic {
+                background: #deb0b0;
+                border-color: #d0a2a2;
 
-				&:hover {
-					background-color: #d0a2a2;
-				}
-		    }
+                &:hover {
+                    background-color: #d0a2a2;
+                }
+            }
 
-		    &.gear-set {
-		    	background: #beefb2;
-		    	border-color: #b2e4a6;
+            &.gear-set {
+                background: #beefb2;
+                border-color: #b2e4a6;
 
-		    	&:hover {
-					background-color: #b2e4a6;
-				}
-		    }
+                &:hover {
+                    background-color: #b2e4a6;
+                }
+            }
 
-		    &.gear-angelic {
-		    	background: #fff6c8;
-			    border-color: #f9f0c0;
+            &.gear-angelic {
+                background: #fff6c8;
+                border-color: #f9f0c0;
 
-			    &:hover {
-					background-color: #f9f0c0;
-				}
-		    }
+                &:hover {
+                    background-color: #f9f0c0;
+                }
+            }
 
-			.price-tag {
-				left: 6em;
-				top: 1.25em;
+            .price-tag {
+                left: 6em;
+                top: 1.25em;
 
-				img {
-					height: 11px;
-				    margin-right: 2px;
-				    margin-bottom: -3px;
-				    margin-top: -4px;
-				}
-			}
+                img {
+                    height: 11px;
+                    margin-right: 2px;
+                    margin-bottom: -3px;
+                    margin-top: -4px;
+                }
+            }
 
-			> div {
-				background-repeat: no-repeat;
-				height: 6rem;
-			}
-		}
-	}
+            > div {
+                background-repeat: no-repeat;
+                height: 6rem;
+            }
+        }
+    }
 }
 
 .item-view-header-small {
-	.gear-container {
-		.equipment-image {
-			width: 3rem;
-			padding: 0;
+    .gear-container {
+        .equipment-image {
+            width: 3rem;
+            padding: 0;
 
-			> div {
-				height:3rem;
-				background-size: 100%;
-			}
-		}
-	}
+            > div {
+                height:3rem;
+                background-size: 100%;
+            }
+        }
+    }
 }
 
 .item-details {
-	background-color: #fff; //eff2fb
-	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.02), 0 1px 10px 0 rgba(0, 0, 0, 0.02);
-	padding: 1em;
-	position: relative;
+    background-color: #fff; //eff2fb
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.02), 0 1px 10px 0 rgba(0, 0, 0, 0.02);
+    padding: 1em;
+    position: relative;
 
-	.item-stats {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-		margin-top: 1em;
-	    display: inline-grid;
-	    grid-template-columns: 50% 50%;
-	    width: 100%;
-	}
+    .item-stats {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-top: 1em;
+        display: inline-grid;
+        grid-template-columns: 50% 50%;
+        width: 100%;
+    }
 }
 
 .item-offers {
-	width: 100%;
-	background-color: #FFF;
-	margin: -1em 0;
-	box-shadow: 5px 0 4px -4px rgba(0, 0, 0, 0.02), -5px 0 4px -4px rgba(0, 0, 0, 0.02);
+    width: 100%;
+    background-color: #FFF;
+    margin: -1em 0;
+    box-shadow: 5px 0 4px -4px rgba(0, 0, 0, 0.02), -5px 0 4px -4px rgba(0, 0, 0, 0.02);
 
-	> .sorting {
-		background-color: #f2f6fb;
+    > .sorting {
+        background-color: #f2f6fb;
 
-		> li {
-			padding: 0 1em;
+        > li {
+            padding: 0 1em;
 
-			.row {
-				div[class^="col-"], .col {
-					font-weight: bold;
-					line-height: 3;
-				}
-			}
-		}
-	}
+            .row {
+                div[class^="col-"], .col {
+                    font-weight: bold;
+                    line-height: 3;
+                }
+            }
+        }
+    }
 
-	> ul {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
+    > ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
 
-		> li {
-			padding: 1em;
-			border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-			background-color: transparent;
+        > li {
+            padding: 1em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            background-color: transparent;
 
-			&:last-child {
-				border-bottom: none;
-			}
+            &:last-child {
+                border-bottom: none;
+            }
 
-			.avatar {
-				width: 38px;
-				border-radius: 50%;
-			}
+            .avatar {
+                width: 38px;
+                border-radius: 50%;
+            }
 
-			.col-reputation {
-				font-weight: bold;
+            .col-reputation {
+                font-weight: bold;
 
-				.feather {
-					margin-right: 1em;
-				}
-			}
+                .feather {
+                    margin-right: 1em;
+                }
+            }
 
-			.flag-region {
-				width: 32px;
-			}
+            .flag-region {
+                width: 32px;
+            }
 
-			.price-icon {
-				height: 13px;
-   				margin-right: 5px;
-			}
+            .price-icon {
+                height: 13px;
+                margin-right: 5px;
+            }
 
-			.col:not(.col-username) {
-				line-height: 3;
-			}
-		}
-	}
+            .col:not(.col-username) {
+                line-height: 3;
+            }
+        }
+    }
 }
