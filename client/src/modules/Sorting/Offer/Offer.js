@@ -73,8 +73,14 @@ const SortOptions = (props) => {
                         <FormGroup>
                             <Input type="select" name="sortRegion" data-region onChange={props.onChange} disabled={props.loading}>
                                 <option value="ALL">International (All)</option>
-                                <option value="EU">Europe</option>
-                                <option value="CH">China</option>
+                                <option value="AU">Australia</option>
+                                <option value="BR">Brazil</option>
+                                <option value="EU1">Europe 1</option>
+                                <option value="EU1">Europe 2</option>
+                                <option value="CN1">China 1</option>
+                                <option value="CN1">China 2</option>
+                                <option value="USE">US East</option>
+                                <option value="USW">ES West</option>
                             </Input>
                         </FormGroup>
                     </Col>

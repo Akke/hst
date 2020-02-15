@@ -1,68 +1,128 @@
 @import "../../../includes";
+@import "../../../colors";
 
 .item-view-header {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1em 0;
 
-    .gear-container {
+    > .gear-container {
         border-radius: 0.25rem 0 0 0.25rem;     
+        border-radius: 50%;
+        transition: background-color 0.2s ease, box-shadow 0.4s ease;
+        background: $background-color;
+        height: 10em;
+        width: 10em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -5em;
 
-        .equipment-image {
+        &:hover {
+            background-color: $background-color-focus;
+        }
+
+        &.gear-satanic {
+            box-shadow: 0 5px 10px $satanic-color;
+            border: 2px solid $satanic-color;
+            &:hover {
+                box-shadow: 0 5px 15px $satanic-color;
+            }
+        }
+
+        &.gear-set {
+            box-shadow: 0 5px 10px $set-color;
+            border: 2px solid $set-color;
+            &:hover {
+                box-shadow: 0 5px 15px $set-color;
+            }
+        }
+
+        &.gear-angelic {
+            box-shadow: 0 5px 10px $angelic-color;
+            border: 2px solid $angelic-color;
+            &:hover {
+                box-shadow: 0 5px 15px $angelic-color;
+            }
+        }
+
+        >  .equipment-image {
             width: 7rem;
             padding: 1rem;
-            margin-right: 1em;
-            text-align: center;
-            border-radius: 0.25rem;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            background: #e9ecef;
             border: none;
-
-            &:active {
-                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15) inset;
-                border-color: transparent;
-            }
-
-            &.gear-satanic {
-                background: #deb0b0;
-                border-color: #d0a2a2;
-
-                &:hover {
-                    background-color: #d0a2a2;
-                }
-            }
-
-            &.gear-set {
-                background: #beefb2;
-                border-color: #b2e4a6;
-
-                &:hover {
-                    background-color: #b2e4a6;
-                }
-            }
-
-            &.gear-angelic {
-                background: #fff6c8;
-                border-color: #f9f0c0;
-
-                &:hover {
-                    background-color: #f9f0c0;
-                }
-            }
-
-            .price-tag {
-                left: 6em;
-                top: 1.25em;
-
-                img {
-                    height: 11px;
-                    margin-right: 2px;
-                    margin-bottom: -3px;
-                    margin-top: -4px;
-                }
-            }
 
             > div {
                 background-repeat: no-repeat;
                 height: 6rem;
+            }
+        }
+    }
+
+    .item-view-information {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 2em;
+
+        > h4 {
+            line-height: 2;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .statistics {
+            list-style-type: none;
+            margin: 2em 0 -1em 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: $background-color;
+
+            > li {
+                padding: 1em 8em;
+                text-align: left;
+
+                .count {
+                    font-weight: bold;
+                    color: #FFF;
+                    font-size: 1.2em;
+                }
+
+                &.price-history {
+                    > a {
+                        margin: -1em 0;
+                        padding: 1em;
+                        display: flex;
+                        text-decoration: none;
+                        transition: background-color 0.2s ease, color 0.2s ease;
+
+                        &:hover {
+                            background-color: darken($background-color-focus, 1%);
+                            color: #FFF;
+                        }
+
+                        .feather {
+                            height: 43px;
+                            margin-left: 2em;
+                        }
+
+                        .item-price {
+                            margin-left: auto;
+                            position: relative;
+
+                            &:before {
+                                content: "";
+                                background-image: url("/images/icons/rubies.png");
+                                width: 15px;
+                                height: 13px;
+                                display: inline-block;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                margin: 2px 5px -2px 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -82,11 +142,11 @@
     }
 }
 
-.item-details {
-    background-color: #fff; //eff2fb
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.02), 0 1px 10px 0 rgba(0, 0, 0, 0.02);
-    padding: 1em;
+.item-view-details {
+    background-color: $background-color-focus;
+    border-bottom: 1px solid $background-color-focus;
     position: relative;
+    border-top: 5px solid $background-color;
 
     .item-stats {
         margin: 0;
@@ -99,65 +159,212 @@
     }
 }
 
-.item-offers {
-    width: 100%;
-    background-color: #FFF;
-    margin: -1em 0;
-    box-shadow: 5px 0 4px -4px rgba(0, 0, 0, 0.02), -5px 0 4px -4px rgba(0, 0, 0, 0.02);
+.item-view-offers {
+    .header {
+        font-weight: bold;
+        color: #FFF;
+        background-color: $foreground-color;
+        border: none;
+        padding: 1em;
 
-    > .sorting {
-        background-color: #f2f6fb;
+        .row {
+            padding: 1em;
+            margin: -1em;
+        }
 
-        > li {
-            padding: 0 1em;
+        &:hover {
+            background-color: $foreground-color;
+        }
 
-            .row {
-                div[class^="col-"], .col {
-                    font-weight: bold;
-                    line-height: 3;
-                }
-            }
+        .col {
+            padding: 1px 0;
+            text-align: center;
+        }
+
+        .col-sm-1:first-child {
+            max-width: 4em;
+        }
+
+        .seller {
+            text-align: left;
         }
     }
 
-    > ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
+    .list-group-item:not(.header) {
+        background-color: #26272c;
+        padding: 1em;
+        border: none;
 
-        > li {
+        &:nth-child(2) {
+            border-top: none !important;
+        }
+
+        border-top: 1px solid rgba(255, 255, 255, 0.02);
+
+        &:last-child {
+            .collapse {
+                border-radius: 0 0 0.25rem 0.25rem;
+            }
+        }
+
+        .collapse {
+            background-color: $foreground-color;
             padding: 1em;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-            background-color: transparent;
+            margin: 1em -1em -1em;
+
+            .row {
+                &:hover {
+                    background-color: $foreground-color;
+                }
+
+                cursor: auto;
+
+                .col {
+                    text-align: left;
+                    margin-right: 4em;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+
+                .info-list {
+                    margin-bottom: -1.5em;
+
+                    .info-list-title {
+                        color: #FFF;
+                        display: block;
+                        margin-bottom: 1em;
+                        text-transform: uppercase;
+                    }
+
+                    > .row {
+                        margin-bottom: 1em;
+                        border-bottom: 1px solid rgb(38, 39, 44);
+                        font-size: 0.9em;
+
+                        &:last-child {
+                            border: none;
+                        }
+
+                        .info-list-item-caption {
+                            color: #FFF;
+                        }
+
+                        .col {
+                            .rune-list {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                display: flex;
+                                flex-wrap: wrap;
+
+                                li {
+                                    margin-right: 0.5em;
+                                    margin-bottom: 0.5em;
+
+                                    &:last-child {
+                                        margin: 0;
+                                    }
+
+                                    .badge {
+                                        padding: 0.5em;
+                                        font-size: 0.8em;
+                                    }
+
+                                    img {
+                                        width: 10px;
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .row {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            padding: 1em;
+            margin: -1em;
 
             &:last-child {
-                border-bottom: none;
+                border-radius: 0 0 0.25rem 0.25rem;
+            }
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.01);
+            }
+
+            .col {
+                padding: 1px 0;
+                text-align: center;
             }
 
             .avatar {
-                width: 38px;
-                border-radius: 50%;
-            }
+                max-width: 4em;
+                padding: 0;
 
-            .col-reputation {
-                font-weight: bold;
+                img {
+                    height: 34px;
+                    border-radius: 0.25rem;
+                    border: 2px skyblue solid;
+                    margin: -5px;
 
-                .feather {
-                    margin-right: 1em;
+                    &.in-game {
+                        border-color: #92de92;
+                    }
+
+                    &.offline {
+                        border-color: silver;
+                    }
                 }
             }
 
-            .flag-region {
-                width: 32px;
+            .seller {
+                text-align: left;
+                a {
+                    font-weight: bold;
+                    color: #FFF;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
             }
 
-            .price-icon {
-                height: 13px;
-                margin-right: 5px;
+            .item-price {
+                margin-left: auto;
+                position: relative;
+                color: $primary-color;
+                font-weight: bold;
+
+                &:before {
+                    content: "";
+                    background-image: url("/images/icons/rubies.png");
+                    width: 15px;
+                    height: 13px;
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    margin: 2px 5px -2px 0;
+                }
             }
 
-            .col:not(.col-username) {
-                line-height: 3;
+            .region {
+                img {
+                    height: 22px;
+                    border-radius: 0.25rem;
+                    display: inherit;
+                }
+            }
+
+            .expand {
+                padding-top: 4px;
+                text-align: right;
             }
         }
     }

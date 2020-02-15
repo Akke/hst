@@ -15,7 +15,7 @@
 
         input {
             padding: 1.5em 1em;
-            background-color: #15171b;
+            background-color: $background-color-focus;
             transition: background-color 0.2s ease;
             color: $input-color;
 

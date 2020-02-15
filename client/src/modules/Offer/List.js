@@ -1,7 +1,7 @@
 import React from "react";
+import loadable from "@loadable/component";
 import offerService from "../../services/offerService";
 import { FilterContext } from "../../context/filter";
-import SellingConsumer from "./Selling/Consumer/SellingConsumer";
 import News from "../News/List/List";
 import {
     Row,
@@ -17,7 +17,9 @@ import { Loader } from "react-feather";
 
 import "./_List.scss";
 import OfferSorting from "../Sorting/Offer/Offer";
+import Selling from "./Selling/Selling";
 
+const LoadingPage = loadable(() => import("../../LoadingPage"));
 const rowCount = 20; // The amount of items to show
 
 export default class Offer extends React.Component {
@@ -46,21 +48,21 @@ export default class Offer extends React.Component {
         this.sortOnChanged = this.sortOnChanged.bind(this);
     }
 
+    componentDidMount() {
+        this.getOffers();
+    }
+
     async shouldComponentUpdate(nextProps, nextState) { 
         if(this.state.skip !== nextState.skip) {
-            // Called when loading more results.
-            let noMoreResults = this.state.noMoreResults;
-            if(noMoreResults) return;
+            if(this.state.noMoreResults) return;
 
             offerService.getAll(this.state.skip, this.state.limit, this.state.mode, this.state.region, this.state.minPrice, this.state.maxPrice, this.state.sort)
                 .then((res) => {
-                    if(res.length < this.state.limit) noMoreResults = true;
-
                     const offers = this.state.offers.concat(res);
 
                     this.setState({
                         offers: offers, 
-                        noMoreResults: noMoreResults
+                        noMoreResults: res.length < this.state.limit
                     });
                 }).catch((err) => {
                     console.log(err);
@@ -96,10 +98,6 @@ export default class Offer extends React.Component {
         return true;
     }
 
-    componentDidMount() {
-        if(this.state.offers.length < 1) this.getOffers();
-    }
-
     async onAutoRefreshChanged() {
         this.setState({ autoRefresh: !this.state.autoRefresh });
 
@@ -114,7 +112,7 @@ export default class Offer extends React.Component {
     }
 
     async onFilterUpdated() {
-        let res = offerService.getAll(0, this.props.limit, this.state.mode, this.state.region, this.state.minPrice, this.state.maxPrice, this.state.sort)
+        let res = offerService.getAll(0, this.state.limit, this.state.mode, this.state.region, this.state.minPrice, this.state.maxPrice, this.state.sort)
             .then((data) => {
                 this.setState({ 
                     offers: data,
@@ -156,48 +154,58 @@ export default class Offer extends React.Component {
 
                 <div className="wrapper">
                     <div className="container">
-                        <div className="offer-container">
-                            <div>
+                        {this.state.offers.length < 1 ? "No more results." : 
+                        (
+                            <div className="offer-container">
+                                <div>
+                                    <Row>
+                                        <Col className="d-flex">
+                                            <h4 className="mt-2 mb-4 text-white">Most Recent Offers</h4>
+
+                                            <FormGroup className="ml-3" check inline>
+                                                <div style={{maxHeight: "1.25rem"}}>
+                                                    <CustomInput type="checkbox" id="autoRefreshRadio1" name="autoRefresh" label="Auto Refresh Offers" checked={this.state.autoRefresh} onChange={this.onAutoRefreshChanged} disabled={this.state.autoRefreshDisabled} />
+                                                </div>
+                                            </FormGroup>
+
+                                            <ButtonGroup className="sort-button-group">
+                                                <Button className={this.state.sort == "desc" ? "active" : ""} data-value="desc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Newest</Button>
+                                                <Button className={this.state.sort == "asc" ? "active" : ""} data-value="asc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Oldest</Button>
+                                            </ButtonGroup>
+                                        </Col>
+
+                                        <Col lg="3"></Col>
+                                    </Row>
+                                </div>
+
                                 <Row>
-                                    <Col className="d-flex">
-                                        <h4 className="mt-2 mb-4 text-white">Most Recent Orders</h4>
+                                    <Col>
+                                        <Selling 
+                                            ref={this.selling} 
+                                            sort={this.state.sort} 
+                                            autoRefresh={this.state.autoRefresh} 
+                                            loading={this.state.loading} 
+                                            offers={this.state.offers} 
+                                            filter={this.props.filter} 
+                                            allItems={this.props.equipment} 
+                                            skip={this.state.skip} 
+                                            limit={this.state.limit} 
+                                        />
+                                        
 
-                                        <FormGroup className="ml-3" check inline>
-                                            <div style={{maxHeight: "1.25rem"}}>
-                                                <CustomInput type="checkbox" id="autoRefreshRadio1" name="autoRefresh" label="Auto Refresh Orders" checked={this.state.autoRefresh} onChange={this.onAutoRefreshChanged} disabled={this.state.autoRefreshDisabled} />
-                                            </div>
-                                        </FormGroup>
-
-                                        <ButtonGroup className="sort-button-group">
-                                            <Button className={this.state.sort == "desc" ? "active" : ""} data-value="desc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Newest</Button>
-                                            <Button className={this.state.sort == "asc" ? "active" : ""} data-value="asc" onClick={this.sortOnChanged} disabled={this.state.autoRefreshDisabled}>Sort by Oldest</Button>
-                                        </ButtonGroup>
+                                        {!this.state.loading ? !this.state.noMoreResults ? (
+                                            <button className="btn btn-dark w-100 mt-4 mb-2 load-offers-more" style={{"display": (this.state.noMoreResults ? "none" : "block")}} onClick={this.loadMoreOffers}>
+                                                {(this.state.loading ? <Loader className="feather" /> : (
+                                                    "Load More"
+                                                ))}
+                                            </button>
+                                        ) : null : null}
                                     </Col>
-
-                                    <Col lg="3"></Col>
+                                    
+                                    <News />
                                 </Row>
                             </div>
-
-                            <Row>
-                                <Col>
-                                    <SellingConsumer pRef={this.selling} data={this.state} allItems={this.props.equipment} loadMoreOffers={this.loadMoreOffers} filterParams={this.props.filter} />
-                                    
-                                    {!this.state.loading ? !this.state.noMoreResults ? (
-                                        <button className="btn btn-dark w-100 mt-4 mb-4 load-offers-more" style={{"display": (this.state.noMoreResults ? "none" : "block")}} onClick={this.loadMoreOffers}>
-                                            {(this.state.loading ? <Loader className="feather" /> : (
-                                                "Load More"
-                                            ))}
-                                        </button>
-                                    ) : (
-                                        <div className="no-more-results">
-                                            No more offers.
-                                        </div>
-                                    ) : null}
-                                </Col>
-                                
-                                <News />
-                            </Row>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -6,31 +6,6 @@
 }
 
 .offer-container {
-    .load-offers-more {
-        padding: 1em;
-        background-color: transparent;
-        border: 1px dotted rgba(255, 255, 255, 0.05);
-        color: $text-color;
-        font-weight: bold;
-
-        &:hover {
-            border-color: rgba($primary-color, .25);
-            color: $primary-color;
-        }
-
-        &:active, &:focus {
-            box-shadow: none !important;
-            background-color: $primary-color !important;
-            border-style: solid;
-            color: #FFF;
-        }
-
-        .feather {
-            height: 16px;
-            margin-right: 0.25rem;
-        }
-    }
-
     .no-more-results {
         text-align: center;
         display: block;
@@ -89,6 +64,14 @@
                     height: 48px;
                     border-radius: 0.25rem;
                     border: 2px skyblue solid;
+
+                    &.in-game {
+                        border-color: #92de92;
+                    }
+
+                    &.offline {
+                        border-color: silver;
+                    }
                 }
             }
 

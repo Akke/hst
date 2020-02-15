@@ -22,7 +22,7 @@
         input {
             border: none;
             padding: 2rem 1.5rem;
-            background-color: $background-color;
+            background-color: $background-color-focus;
             color: $text-color;
         }
 
@@ -32,7 +32,7 @@
             top: 1em;
             width: 25px;
             height: 25px;
-            stroke: $text-color;
+            stroke: $input-color;
             z-index: 4;
             pointer-events: none;
         }
@@ -51,7 +51,7 @@
             height: auto;
             max-height: 40rem;
             overflow-x: hidden;
-            background: $background-color;
+            background: $background-color-focus;
 
             &.fade {
                 display: block;
@@ -65,7 +65,7 @@
                 border-bottom: 1px solid #131519;
                 margin-bottom: 0.5em;
                 font-weight: bold;
-                color: $text-color;
+                color: #FFF;
                 text-transform: uppercase;
             }
 
@@ -81,12 +81,12 @@
                 }
 
                 &:active, &:focus {
-                    background-color: #000;
+                    background-color: $background-color;
                     color: inherit;
                 }
 
                 &:hover {
-                    background-color: $background-color-focus;
+                    background-color: darken($background-color-focus, 1%);
                 }
 
                 transition: 0.2s background-color ease;

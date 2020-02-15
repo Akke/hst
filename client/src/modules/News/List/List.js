@@ -11,7 +11,7 @@ export default class News extends React.Component {
     render() {
         return (
             <Col xs="3">
-                <ListGroup>
+                <ListGroup className="news-list-group">
                     <ListGroupItem tag="a" href="#" className="title">News</ListGroupItem>
 
                     <ListGroupItem active tag="a" href="#" action>

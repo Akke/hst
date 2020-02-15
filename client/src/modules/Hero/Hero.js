@@ -26,12 +26,34 @@ export default class Hero extends React.Component {
             itemTypes: [],
             empty: false,
             dropdownOpen: false,
-            loading: true
+            loading: true,
+            equipment: null
         };
 
         this.onSearch = this.onSearch.bind(this);
         this.toggle = this.toggle.bind(this);
         this.hideDropdown = this.hideDropdown.bind(this);
+    }
+
+    async componentDidMount() {
+        let items = await equipmentService.getAll();
+        this.setState({
+            equipment: items
+        }); 
+
+        offerService.getAll(0, 0)
+            .then((data) => {
+                equipmentService.getTypes()
+                    .then((types) => {
+                        this.setState({ orders: data, empty: true, loading: false, itemTypes: types });
+                    })
+                    .catch((error) => {
+                        return console.error(error);
+                    });
+            })
+            .catch((error) => {
+                return console.error(error);
+            });
     }
 
     toggle(e) {
@@ -40,26 +62,6 @@ export default class Hero extends React.Component {
         this.setState(prevState => ({
             dropdownOpen: !prevState.dropdownOpen
         }));
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        if(this.props.equipment !== nextProps.equipment) {
-            offerService.getAll(0, 0)
-                .then((data) => {
-                    equipmentService.getTypes()
-                        .then((types) => {
-                            this.setState({ orders: data, empty: true, loading: false, itemTypes: types });
-                        })
-                        .catch((error) => {
-                            return console.error(error);
-                        });
-                })
-                .catch((error) => {
-                    return console.error(error);
-                });
-        }
-
-        return true;
     }
 
     hideDropdown() {
@@ -71,7 +73,7 @@ export default class Hero extends React.Component {
     onSearch(e) {
         this.setState({ empty: false });
 
-        this.props.equipment.forEach((item) => {
+        this.state.equipment.forEach((item) => {
             if(!this.state.items.includes(item) && item.name.toLowerCase().includes(e.target.value.toLowerCase())) {
                 if(!this.state.empty) this.setState({ empty: true });
 
@@ -137,7 +139,7 @@ export default class Hero extends React.Component {
 
                         <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                             <DropdownToggle tag="div">
-                                <input type="text" onChange={this.onSearch} autoComplete="off" className="form-control rounded" placeholder="Enter an item name to search the market for offers..." aria-describedby="inputGroup-sizing-lg" aria-label="Search" role="button" id="heroItemSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" spellCheck="false" />
+                                <input type="text" onChange={this.state.equipment ? this.onSearch : null} autoComplete="off" className="form-control rounded" placeholder="Enter an item name to search the market for offers..." aria-describedby="inputGroup-sizing-lg" aria-label="Search" role="button" id="heroItemSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" spellCheck="false" />
                             </DropdownToggle>
 
                             <DropdownMenu className="dropdown-hero-item-search fade">

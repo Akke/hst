@@ -5,13 +5,15 @@ import { PlusCircle } from "react-feather";
 import "./_Button.scss";
 import { userContext } from "../../../context/user";
 import NewOfferModal from "../NewOfferModal/Modal";
+import equipmentService from "../../../services/equipmentService";
 
 export default class NewOfferButton extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            equipment: null
         };
 
         this.toggle = this.toggle.bind(this);
@@ -23,8 +25,15 @@ export default class NewOfferButton extends React.Component {
         });
     }
 
+    async componentDidMount() {
+        let items = await equipmentService.getAll();
+        this.setState({
+            equipment: items
+        }); 
+    }
+
     render() {
-        if(!this.context.user) return null;
+        if(!this.state.equipment || !this.context.user) return null;
         
         return (
             <div>
@@ -36,7 +45,7 @@ export default class NewOfferButton extends React.Component {
                     <span className="text-primary">Place Order</span>
                 </div>
 
-                <NewOfferModal isOpen={this.state.isModalOpen} toggle={this.toggle} equipment={this.props.equipment} />
+                <NewOfferModal isOpen={this.state.isModalOpen} toggle={this.toggle} equipment={this.state.equipment} />
             </div>
         );
     }

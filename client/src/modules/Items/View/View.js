@@ -1,19 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import loadable from "@loadable/component";
-import {
-    Row,
-    Col,
-    ListGroup,
-    ListGroupItem
-} from "reactstrap";
-
 import equipmentService from "../../../services/equipmentService";
+import offerService from "../../../services/offerService";
 import LoadingPage from "../../../LoadingPage";
-import { ThumbsUp, ThumbsDown, Minus } from "react-feather";
+import OfferSorting from "../../Sorting/Offer/Offer";
+import Selling from "../../Offer/Selling/Selling";
+import Loading from "../../Offer/Selling/Loading";
+import { ThumbsUp, ThumbsDown, Minus, MoreHorizontal, Loader } from "react-feather";
 import "./_View.scss";
 
 const Details = loadable(() => import("./Details/Details"));
+const rowCount = 20; // The amount of items to show
 
 export default class View extends React.Component {
     constructor(props) {
@@ -22,23 +20,134 @@ export default class View extends React.Component {
         this.param = this.props.match.params.item;
 
         this.state = {
-            item: [],
-            types: []
+            items: null,
+            types: null,
+            offers: null,
+            skip: 0,
+            limit: rowCount,
+            mode: this.props.filter.mode,
+            region: "ALL",
+            sort: "desc",
+            noMoreResults: true
         };
+
+        this.onFilterUpdated = this.onFilterUpdated.bind(this);
+        this.loadMoreOffers = this.loadMoreOffers.bind(this);
+    }
+
+    async shouldComponentUpdate(nextProps, nextState) { 
+        if(this.state.skip !== nextState.skip) {
+            if(this.state.noMoreResults) return;
+
+            offerService
+                .getAll(
+                    nextState.skip, 
+                    this.state.limit, 
+                    this.state.mode, 
+                    this.state.region, 
+                    this.state.minPrice, 
+                    this.state.maxPrice, 
+                    this.state.sort, 
+                    this.state.items[0].id
+                )
+                .then((res) => {
+                    const offers = this.state.offers.concat(res);
+
+                    this.setState({
+                        offers: offers, 
+                        noMoreResults: res.length < this.state.limit
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                });
+        }
+
+        if(this.state.sort !== nextState.sort) {
+            this.setState({ 
+                loading: true,
+                autoRefreshDisabled: true
+            }, () => {
+                this.onFilterUpdated();
+                setTimeout(() => {
+                    this.setState({ autoRefreshDisabled: false });
+                }, 1000);
+            });
+        }
+
+        if(this.props.filter !== nextProps.filter) {
+            this.setState({ 
+                mode: nextProps.filter.mode, 
+                region: nextProps.filter.region, 
+                minPrice: nextProps.filter.minPrice,
+                maxPrice: nextProps.filter.maxPrice,
+                loading: true, 
+                skip: rowCount
+            }, () => {
+                this.onFilterUpdated();
+            });
+        }
+
+        return true;
     }
 
     async componentDidMount() {
-        const item = await equipmentService.getOne(this.param),
-            types = await equipmentService.getTypes();
+        const items = await equipmentService.getOne(this.param),
+            types = await equipmentService.getTypes(),
+            offers = await offerService
+                .getAll(
+                    0, 
+                    this.state.limit, 
+                    this.state.mode, 
+                    this.state.region, 
+                    this.state.minPrice, 
+                    this.state.maxPrice, 
+                    this.state.sort, 
+                    items[0].id
+                )
 
         this.setState({
-            item: item[0],
-            types: types
+            items: items,
+            types: types,
+            offers: offers,
+            noMoreResults: false
+        });
+    }
+
+    async onFilterUpdated() {
+        let res = offerService
+            .getAll(
+                0, 
+                this.state.limit, 
+                this.state.mode, 
+                this.state.region, 
+                this.state.minPrice, 
+                this.state.maxPrice, 
+                this.state.sort, 
+                this.state.items[0].id
+            )
+            .then((data) => {
+                this.setState({ 
+                    offers: data,
+                    noMoreResults: data.length < this.state.limit
+                }, () => {
+                    this.setState({ loading: false });
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
+    loadMoreOffers() {
+        if(this.state.loading) return;
+
+        this.setState({
+            skip: this.state.skip + rowCount
         });
     }
 
     render() {
-        if(this.state.item.length < 1) {
+        if(!this.state.offers || !this.state.items) {
             return (
                 <div className="wrapper">
                     <LoadingPage />
@@ -46,110 +155,37 @@ export default class View extends React.Component {
             );
         }
 
-        const item = this.state.item,
-            type = this.state.types.filter(type => type.id == item.type_id)[0];
+        const items = this.state.items,
+            type = this.state.types.filter(type => type.id == items[0].type_id)[0];
 
         return (
             <div>
-                <Details item={item} type={type} param={this.param} />
+                <Details items={items} type={type} param={this.param} />
+                <OfferSorting />
 
                 <div className="wrapper">
                     <div className="container">
-                        <Row>
-                            <Col sm="2">
-                                <ListGroup>
-                                    <ListGroupItem tag="a" href="#" action>
-                                        Orders (102)
-                                    </ListGroupItem>
-                                    <ListGroupItem tag="a" href="#" action className="text-muted">
-                                        Auctions (2)
-                                    </ListGroupItem>
-                                </ListGroup>
-                            </Col>
+                        {this.state.offers.length < 1 ? "No more results." : (
+                            <Selling 
+                                sort={this.state.sort} 
+                                autoRefresh={false} 
+                                loading={!this.state.offers} 
+                                offers={this.state.offers} 
+                                filter={this.props.filter} 
+                                allItems={this.props.items} 
+                                skip={this.state.skip} 
+                                limit={this.state.limit} 
+                                itemView={true}
+                            />
+                        )}
 
-                            <Col>
-                                <div className="item-offers">
-                                    <ul className="sorting">
-                                        <li>
-                                            <Row>
-                                                <Col sm="1"></Col>
-
-                                                <Col lg="2">
-                                                    Seller
-                                                </Col>
-
-                                                <Col>
-                                                    Price
-                                                </Col>
-
-                                                <Col>
-                                                    Level
-                                                </Col>
-
-                                                <Col>
-                                                    Quality
-                                                </Col>
-
-                                                <Col>
-                                                    Ability
-                                                </Col>
-
-                                                <Col>
-                                                    Runes
-                                                </Col>
-
-                                                <Col>
-                                                    Reputation
-                                                </Col>
-                                            </Row>
-                                        </li>
-                                    </ul>
-
-                                    <ul>
-                                        <li>
-                                            <Row>
-                                                <Col sm="1" className="text-center col-avatar">
-                                                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ac/ac44fbc3a1564e319bdeaa11cc5a3a4222c63e65_full.jpg" className="avatar" />
-                                                </Col>
-
-                                                <Col className="col-username" lg="2">
-                                                    <a href="ok" className="font-weight-bold d-block">Akke</a>
-                                                    <div class="badge badge-primary">ONLINE ON-SITE</div>
-                                                </Col>
-
-                                                <Col className="text-info">
-                                                    <img src="/images/icons/rubies.png" alt="Rubies" className="price-icon" />
-                                                    &times; <span className="font-weight-bold">150k</span>
-                                                </Col>
-
-                                                <Col>
-                                                    <span className="font-weight-bold">10</span> of 10
-                                                </Col>
-
-                                                <Col>
-                                                    <span className="font-weight-bold">99%</span>
-                                                </Col>
-
-                                                <Col>
-                                                    <div class="badge badge-dark">Buriza</div>
-                                                </Col>
-
-                                                <Col>
-                                                    <ul>
-                                                        <li><strong>(x2) Wii</strong></li>
-                                                    </ul>
-                                                </Col>
-
-                                                <Col className="col-reputation text-success">
-                                                    <ThumbsUp className="feather" />
-                                                    102
-                                                </Col>
-                                            </Row>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </Col>
-                        </Row>
+                        {!this.state.loading ? !this.state.noMoreResults ? (
+                            <button className="btn btn-dark w-100 mt-4 load-offers-more" style={{"display": (this.state.noMoreResults ? "none" : "block")}} onClick={this.loadMoreOffers}>
+                                {(this.state.loading ? <Loader className="feather" /> : (
+                                    "Load More"
+                                ))}
+                            </button>
+                        ) : null : null}
                     </div>
                 </div>
             </div>

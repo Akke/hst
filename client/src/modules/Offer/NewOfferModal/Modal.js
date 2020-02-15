@@ -331,8 +331,14 @@ export default class NewOfferModal extends React.Component {
                                 <Label className="font-weight-bold">Region</Label>
                                 <CustomInput type="select" id="exampleCustomSelect" name="region" onChange={this.onRegionChanged}>
                                     <option value="ALL">International (All)</option>
-                                    <option value="EU">Europe</option>
-                                    <option value="CH">China</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="EU1">Europe 1</option>
+                                    <option value="EU1">Europe 2</option>
+                                    <option value="CN1">China 1</option>
+                                    <option value="CN1">China 2</option>
+                                    <option value="USE">US East</option>
+                                    <option value="USW">ES West</option>
                                 </CustomInput>
                                 <FormFeedback valid={false} invalid={false.toString()}></FormFeedback>
                                 <FormText>Choose a region to help us sort your offer. This way you can more easily get people with the same nationality as you to trade with you.</FormText>

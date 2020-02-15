@@ -44,7 +44,9 @@ module.exports = (app, steam) => {
                 const newUser = new User({
                     steamId: req.user._json.steamid,
                     username: req.user._json.personaname,
-                    avatar: req.user._json.avatarfull
+                    avatar: req.user._json.avatarfull,
+                    createdAt: new Date(),
+                    accountId: null
                 });
 
                 newUser.save((err, user) => {

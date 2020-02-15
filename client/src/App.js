@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import loadable from "@loadable/component";
 import axios from "axios";
-import equipmentService from "./services/equipmentService";
 import { FilterContext, filter } from "./context/filter";
 import { userContext } from "./context/user";
 import moment from "moment";
@@ -60,31 +59,20 @@ export default class App extends React.Component {
             _minPrice: filter.minPrice,
             _maxPrice: filter.maxPrice,
         };
-
-        this.getAllItems = this.getAllItems.bind(this);
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         document.title = "HS Trade";
         axios.get("/api/csrf")
             .then(res => {
                 axios.defaults.headers.post["X-XSRF-TOKEN"] = res.data; 
             });
 
-        await this.getAllItems();
-
         if(moment().diff(moment(localStorage.getItem("expires")), "hours") >= 24) {
             localStorage.removeItem("user");
             localStorage.removeItem("expires");
             window.location.reload();
         }
-    }
-
-    async getAllItems() {
-        let items = await equipmentService.getAll();
-        this.setState({
-            equipment: items
-        }); 
     }
 
     render() {
@@ -97,24 +85,24 @@ export default class App extends React.Component {
                 <div className="App">
                     <userContext.Provider value={user}>
                         <Navigation />
-                        <Hero equipment={this.state.equipment} />
+                        <Hero />
 
                         <FilterContext.Provider value={this.state}>
                             <FilterContext.Consumer>
                             {({filter, updateFilter}) => (
                                 <Switch>
-                                    <Route exact path="/items/:item" render={(props) => <AsyncViewItem {...props} fallback={<LoadingPage />} />} />
+                                    <Route exact path="/items/:item" render={(props) => <AsyncViewItem {...props} fallback={<LoadingPage />} filter={filter} />} />
 
                                     <Route exact path="/logout" render={(props) => <Logout {...props} fallback={<LoadingPage />} />} />
                                     <Route exact path="/login/verify" render={(props) => <Login {...props} fallback={<LoadingPage />} />} />
-                                    <Route exact path="/" render={(props) => <AsyncOffer {...props} fallback={<LoadingPage />} filter={filter} equipment={this.state.equipment} />} />
+                                    <Route exact path="/" render={(props) => <AsyncOffer {...props} fallback={<LoadingPage />} filter={filter} />} />
 
                                     <Route component={NotFound} status={404} />
                                 </Switch>
                             )}
                             </FilterContext.Consumer>
 
-                            <NewOfferButton equipment={this.state.equipment} />
+                            <NewOfferButton />
                         </FilterContext.Provider>
 
                         <Footer />

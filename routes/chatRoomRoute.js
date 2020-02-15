@@ -59,8 +59,6 @@ module.exports = (app, csrfProtection, jsonParser, io) => {
 
                 io.sockets.emit(`chat_room_message_${req.body.room}`, dataWithId);
 
-                console.log(recipient)
-
                 if(msg.user != recipient) io.sockets.emit(`chat_room_unread_${recipient}`, { amount: +1, room: req.body.room });
 
                 return res.status(200).send(dataWithId);

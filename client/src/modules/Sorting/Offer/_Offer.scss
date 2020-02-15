@@ -7,7 +7,7 @@
     position: relative;
 
     .form-control {
-        background-color: $wrapper-color;
+        background-color: darken(#121317, 1%);
         transition: background-color 0.2s ease, color 0.2s ease;
         color: $input-color;
 
@@ -62,7 +62,7 @@
     }
 
     .form-control:disabled, .form-control[readonly] {
-      background-color: darken(#121317, 5%);
+      background-color: darken(#121317, 2%);
     }
 
     .custom-radio .custom-control-input:checked~.custom-control-label::after, .custom-checkbox .custom-control-input:checked~.custom-control-label::after {

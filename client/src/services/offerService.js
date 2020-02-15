@@ -2,7 +2,7 @@ import axios from "axios";
 import { filter } from "../context/filter";
 
 export default {
-    getAll: async (skip = 0, limit = 10, mode = filter.mode, region = filter.region, minPrice = filter.minPrice, maxPrice = filter.maxPrice, sort = "desc") => {
+    getAll: async (skip = 0, limit = 10, mode = filter.mode, region = filter.region, minPrice = filter.minPrice, maxPrice = filter.maxPrice, sort = "desc", item = null) => {
         const res = await axios.get("/api/offer", {
             params: {
                 skip: skip,
@@ -12,6 +12,7 @@ export default {
                 minPrice: minPrice,
                 maxPrice: maxPrice,
                 sort: sort,
+                item: item
             }
         });
 
