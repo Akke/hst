@@ -18,6 +18,8 @@ const offerRateLimits = {
     })
 };
 
+const MAX_PRICE = 999999999999;
+
 module.exports = (app, csrfProtection, jsonParser, io) => {
     i18n.configure({
         locales: ["en", "se", "pt", "de"],
@@ -33,7 +35,7 @@ module.exports = (app, csrfProtection, jsonParser, io) => {
             mode = "sc",
             region = "ALL",
             minPrice = "1",
-            maxPrice = "9999999",
+            maxPrice = MAX_PRICE,
             sort = "desc",
             item = null,
             range = "month";
@@ -56,11 +58,11 @@ module.exports = (app, csrfProtection, jsonParser, io) => {
             region: (region == "ALL" ? { $exists: true } : region), 
             price: { 
                 $gte: minPrice,
-                $lte: (maxPrice != "1") ? maxPrice : 9999999
+                $lte: (maxPrice != "1") ? maxPrice : MAX_PRICE
             }
         };
 
-        if(item) Object.assign(query, { "item.value": parseInt(item) });
+        if(item) Object.assign(query, { "item.value": +item });
 
         if(range == "month") {
             const currentMonth = new Date().getMonth(),
@@ -72,8 +74,28 @@ module.exports = (app, csrfProtection, jsonParser, io) => {
             Object.assign(query, { createdAt: {$gte: start, $lt: end} });
         }
 
-        let offers = await Offer.find(query).skip(parseInt(skip)).limit(parseInt(limit)).sort({ createdAt: sort });
-        return res.status(200).send(offers);
+        const offers = await Offer.find(query).skip(+skip).limit(+limit).sort({ createdAt: sort }),
+            count = await Offer.countDocuments(query),
+            sellers = await Offer.aggregate([
+                {
+                    "$match": item ? { "item.value": +item } : {}
+                },
+                {
+                    "$group": {
+                        "_id": {
+                            "user": "$user"
+                        }
+                    }
+                },
+                {
+                    "$group": {
+                        "_id": 1,
+                        count: { $sum: 1 }
+                    }
+                }
+            ]);
+
+        return res.status(200).send({ offers, count, sellers });
     });
 
     app.post("/api/offer", [offerRateLimits.post, jsonParser, csrfProtection, verifyToken], (req, res) => {
@@ -111,9 +133,9 @@ module.exports = (app, csrfProtection, jsonParser, io) => {
                 //value,label,color,amount
                 label: Joi.string(),
                 color: Joi.string(),
-                value: Joi.number().integer().min(1).required().messages({
+                value: Joi.string().min(24).max(24).required().messages({
                     "number.base": `${i18n.__("api.errors.offer.create.runes.value.invalidType")}`,
-                    "number.integer": `${i18n.__("api.errors.offer.create.runes.value.invalidNumber")}`,
+                    "number.string": `${i18n.__("api.errors.offer.create.runes.value.invalidNumber")}`,
                     "number.min": `${i18n.__("api.errors.offer.create.runes.value.sizeMin", `{#limit}`)}`,
                     "any.required": `${i18n.__("api.errors.offer.create.runes.value.required")}`
                 }),

@@ -4,6 +4,8 @@ import loadable from "@loadable/component";
 import axios from "axios";
 import { FilterContext, filter } from "./context/filter";
 import { userContext } from "./context/user";
+import { DbContext } from "./context/db";
+import socketableService from "./services/socketableService";
 import moment from "moment";
 
 import "bootswatch/dist/darkly/bootstrap.min.css"; 
@@ -21,6 +23,8 @@ const Navigation = loadable(() => import("./modules/Nav/Nav")),
     Footer = loadable(() => import("./modules/Footer/Footer"));
 
 export default class App extends React.Component {
+    _user = { user: JSON.parse(localStorage.getItem("user")) };
+
     constructor(props) {
         super(props);
 
@@ -52,13 +56,30 @@ export default class App extends React.Component {
             filter: filter,
             updateFilter: this.updateFilter,
             equipment: [],
-            user: {},
+            dbContext: null,
             /* Local Variables */
             _mode: filter.mode,
             _region: filter.region,
             _minPrice: filter.minPrice,
             _maxPrice: filter.maxPrice,
         };
+
+        socketableService.getAll().then(socketables => {
+            socketableService.getTypes().then(socketableTypes => {
+                const dbContext = {
+                    socketables: {
+                        items: socketables,
+                        types: socketableTypes
+                    }
+                };
+
+                this.setState({
+                    dbContext: dbContext
+                });
+            })
+            .catch(e => console.error);
+        })
+        .catch(e => console.error);
     }
 
     componentDidMount() {
@@ -76,37 +97,35 @@ export default class App extends React.Component {
     }
 
     render() {
-        const user = {
-            user: JSON.parse(localStorage.getItem("user"))
-        };
-
         return (
             <Router>
                 <div className="App">
-                    <userContext.Provider value={user}>
-                        <Navigation />
-                        <Hero />
+                    <DbContext.Provider value={this.state.dbContext}>
+                        <userContext.Provider value={this._user}>
+                            <Navigation />
+                            <Hero />
 
-                        <FilterContext.Provider value={this.state}>
-                            <FilterContext.Consumer>
-                            {({filter, updateFilter}) => (
-                                <Switch>
-                                    <Route exact path="/items/:item" render={(props) => <AsyncViewItem {...props} fallback={<LoadingPage />} filter={filter} />} />
+                            <FilterContext.Provider value={this.state}>
+                                <FilterContext.Consumer>
+                                {({filter, updateFilter}) => (
+                                    <Switch>
+                                        <Route exact path="/items/:item" render={(props) => <AsyncViewItem {...props} fallback={<LoadingPage />} filter={filter} />} />
 
-                                    <Route exact path="/logout" render={(props) => <Logout {...props} fallback={<LoadingPage />} />} />
-                                    <Route exact path="/login/verify" render={(props) => <Login {...props} fallback={<LoadingPage />} />} />
-                                    <Route exact path="/" render={(props) => <AsyncOffer {...props} fallback={<LoadingPage />} filter={filter} />} />
+                                        <Route exact path="/logout" render={(props) => <Logout {...props} fallback={<LoadingPage />} />} />
+                                        <Route exact path="/login/verify" render={(props) => <Login {...props} fallback={<LoadingPage />} />} />
+                                        <Route exact path="/" render={(props) => <AsyncOffer {...props} fallback={<LoadingPage />} filter={filter} />} />
 
-                                    <Route component={NotFound} status={404} />
-                                </Switch>
-                            )}
-                            </FilterContext.Consumer>
+                                        <Route component={NotFound} status={404} />
+                                    </Switch>
+                                )}
+                                </FilterContext.Consumer>
 
-                            <NewOfferButton />
-                        </FilterContext.Provider>
+                                <NewOfferButton />
+                            </FilterContext.Provider>
 
-                        <Footer />
-                    </userContext.Provider>
+                            <Footer />
+                        </userContext.Provider>
+                    </DbContext.Provider>
                 </div>
             </Router>
         );

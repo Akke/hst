@@ -9,12 +9,14 @@ import Chart from "../Chart/Chart";
 import LoadingPage from "../../../../LoadingPage";
 import offerService from "../../../../services/offerService";
 import { ArrowRight } from "react-feather";
+import moment from "moment";
 
 export default (props) => {
     const [chartData, setChartData] = useState(null),
         item = props.items[0],
         type = props.type,
-        param = props.param;
+        param = props.param,
+        lastOfferDate = props.lastOfferDate ? moment.unix(props.lastOfferDate).fromNow() : "Never";
 
     useEffect(() => {
         offerService.getChartMonth(param).then(data => {
@@ -41,25 +43,25 @@ export default (props) => {
 
                     <ul className="statistics">
                         <li>
-                            <div className="count">184</div>
+                            <div className="count">{props.totalOffers}</div>
                             <span>Offers</span>
                         </li>
 
                         <li>
-                            <div className="count">36</div>
+                            <div className="count">{props.totalSellers}</div>
                             <span>Sellers</span>
                         </li>
 
                         <li>
                             <div className="count">Last Offer</div>
-                            <span>Yesterday</span>
+                            <span>{lastOfferDate}</span>
                         </li>
 
                         <li className="price-history">
                             <Link to="me">
                                 <span>
                                     <span className="count">Average Price</span>
-                                    <span><div className="item-price">1,500,000</div></span>
+                                    <span><div className="item-price">-</div></span>
                                 </span>
 
                                 <ArrowRight className="feather" />

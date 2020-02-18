@@ -26,7 +26,6 @@ export default class Offer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.selling = React.createRef();
         this.state = {
             offers: [],
             skip: rowCount, // skip and limit has to be the same
@@ -58,11 +57,11 @@ export default class Offer extends React.Component {
 
             offerService.getAll(this.state.skip, this.state.limit, this.state.mode, this.state.region, this.state.minPrice, this.state.maxPrice, this.state.sort)
                 .then((res) => {
-                    const offers = this.state.offers.concat(res);
+                    const offers = this.state.offers.concat(res.offers);
 
                     this.setState({
                         offers: offers, 
-                        noMoreResults: res.length < this.state.limit
+                        noMoreResults: res.offers.length < this.state.limit
                     });
                 }).catch((err) => {
                     console.log(err);
@@ -115,8 +114,8 @@ export default class Offer extends React.Component {
         let res = offerService.getAll(0, this.state.limit, this.state.mode, this.state.region, this.state.minPrice, this.state.maxPrice, this.state.sort)
             .then((data) => {
                 this.setState({ 
-                    offers: data,
-                    noMoreResults: data.length < this.state.limit
+                    offers: data.offers,
+                    noMoreResults: data.offers.length < this.state.limit
                 }, () => {
                     this.setState({ loading: false });
                 });
@@ -130,7 +129,7 @@ export default class Offer extends React.Component {
         let res = await offerService.getAll(0, this.state.limit);
 
         this.setState({
-            offers: res,
+            offers: res.offers,
             noMoreResults: false
         });
     }
@@ -181,7 +180,6 @@ export default class Offer extends React.Component {
                                 <Row>
                                     <Col>
                                         <Selling 
-                                            ref={this.selling} 
                                             sort={this.state.sort} 
                                             autoRefresh={this.state.autoRefresh} 
                                             loading={this.state.loading} 

@@ -14,6 +14,8 @@ require("./models/Offer");
 require("./models/User");
 require("./models/ChatRoom");
 require("./models/ChatRoomMessage");
+require("./models/Socketable");
+require("./models/SocketableType");
 
 const app = express(),
     steam = require("steam-login"),
@@ -38,11 +40,9 @@ app.use(steam.middleware({
     apiKey: process.env.STEAM_API_KEY
 }));
 
-if(process.env.DEBUG) {
-    mongoose.set("debug", (collectionName, method, query, doc) => {
-        console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
-    });
-}
+/*mongoose.set("debug", (collectionName, method, query, doc) => {
+    console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
+});*/
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
@@ -55,6 +55,7 @@ require("./routes/steamLoginRoute")(app, steam);
 require("./routes/chatRoomRoute")(app, csrfProtection, jsonParser, io);
 require("./routes/userRoute")(app, csrfProtection, jsonParser);
 require("./routes/steamRoute")(app, csrfProtection, jsonParser);
+require("./routes/socketableRoute")(app, csrfProtection, jsonParser);
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));

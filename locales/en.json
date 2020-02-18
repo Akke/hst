@@ -34,8 +34,7 @@
                     },
                     "runes": {
                         "value": {
-                            "invalidType": "Rune/Gem must be a number.",
-                            "invalidNumber": "Rune/Gem must be an integer.",
+                            "invalidType": "Rune/Gem must be a string.",
                             "sizeMin": "Rune/Gem must be equal to or greater than %s.",
                             "required": "Rune/Gem can not be empty."
                         },

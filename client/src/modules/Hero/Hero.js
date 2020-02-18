@@ -45,7 +45,7 @@ export default class Hero extends React.Component {
             .then((data) => {
                 equipmentService.getTypes()
                     .then((types) => {
-                        this.setState({ orders: data, empty: true, loading: false, itemTypes: types });
+                        this.setState({ orders: data.offers, empty: true, loading: false, itemTypes: types });
                     })
                     .catch((error) => {
                         return console.error(error);

@@ -7,7 +7,10 @@ import LoadingPage from "../../../LoadingPage";
 import OfferSorting from "../../Sorting/Offer/Offer";
 import Selling from "../../Offer/Selling/Selling";
 import Loading from "../../Offer/Selling/Loading";
-import { ThumbsUp, ThumbsDown, Minus, MoreHorizontal, Loader } from "react-feather";
+import { ThumbsUp, ThumbsDown, Minus, MoreHorizontal, Loader, Settings } from "react-feather";
+import {
+    Button
+} from "reactstrap";
 import "./_View.scss";
 
 const Details = loadable(() => import("./Details/Details"));
@@ -28,7 +31,10 @@ export default class View extends React.Component {
             mode: this.props.filter.mode,
             region: "ALL",
             sort: "desc",
-            noMoreResults: true
+            noMoreResults: true,
+            totalOfferCount: 0, // Ignores limits
+            lastOfferDate: null,
+            totalSellers: null
         };
 
         this.onFilterUpdated = this.onFilterUpdated.bind(this);
@@ -51,11 +57,11 @@ export default class View extends React.Component {
                     this.state.items[0].id
                 )
                 .then((res) => {
-                    const offers = this.state.offers.concat(res);
+                    const offers = this.state.offers.concat(res.offers);
 
                     this.setState({
                         offers: offers, 
-                        noMoreResults: res.length < this.state.limit
+                        noMoreResults: res.offers.length < this.state.limit
                     });
                 }).catch((err) => {
                     console.log(err);
@@ -108,8 +114,11 @@ export default class View extends React.Component {
         this.setState({
             items: items,
             types: types,
-            offers: offers,
-            noMoreResults: false
+            offers: offers.offers,
+            totalOfferCount: offers.count,
+            noMoreResults: false,
+            lastOfferDate: offers.offers[0] ? offers.offers[0].createdAt : null,
+            totalSellers: offers.sellers[0] ? offers.sellers[0].count : 0
         });
     }
 
@@ -127,8 +136,8 @@ export default class View extends React.Component {
             )
             .then((data) => {
                 this.setState({ 
-                    offers: data,
-                    noMoreResults: data.length < this.state.limit
+                    offers: data.offers,
+                    noMoreResults: data.offers.length < this.state.limit
                 }, () => {
                     this.setState({ loading: false });
                 });
@@ -160,11 +169,23 @@ export default class View extends React.Component {
 
         return (
             <div>
-                <Details items={items} type={type} param={this.param} />
+                <Details 
+                    items={items} 
+                    type={type} 
+                    param={this.param} 
+                    totalOffers={this.state.totalOfferCount} 
+                    totalSellers={this.state.totalSellers}
+                    lastOfferDate={this.state.lastOfferDate}
+                />
+
                 <OfferSorting />
 
                 <div className="wrapper">
                     <div className="container">
+                        <div className="advanced-search">
+                            <Button color="dark"><Settings className="feather" /> Advanced Search</Button>
+                        </div>
+
                         {this.state.offers.length < 1 ? "No more results." : (
                             <Selling 
                                 sort={this.state.sort} 

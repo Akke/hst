@@ -357,6 +357,7 @@
             .region {
                 img {
                     height: 22px;
+                    width: 38px;
                     border-radius: 0.25rem;
                     display: inherit;
                 }
@@ -367,5 +368,14 @@
                 text-align: right;
             }
         }
+    }
+}
+
+.advanced-search {
+    display: flex;
+
+    .btn {
+        margin-left: auto;
+        margin-bottom: 1em;
     }
 }

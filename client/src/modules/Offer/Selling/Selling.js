@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import {
     Card, CardImg, CardText, CardBody,
@@ -13,6 +13,7 @@ import {
 import userService from "../../../services/userService";
 import equipmentService from "../../../services/equipmentService";
 import steamService from "../../../services/steamService";
+import socketableService from "../../../services/socketableService";
 import abilityService from "../../../services/abilityService";
 import io from "socket.io-client";
 import Loading from "./Loading";
@@ -22,6 +23,7 @@ import config from "../../../config";
 import abbreviateNumber from "../../../utils/abbreviateNumber";
 import countryFlags from "../../../utils/countryFlags";
 import axios from "axios";
+import { DbContext } from "../../../context/db";
 
 export default class Selling extends React.Component {
     constructor(props) {
@@ -79,7 +81,7 @@ export default class Selling extends React.Component {
             const user = await this.getUser(offer.user);
             offer.user = user[0];
 
-            this.setState({ offers: props }); // This is spammed x(offer amount)
+            this.setState({ offers: props });
         });
     }
 
@@ -214,7 +216,7 @@ export default class Selling extends React.Component {
                             </Row>
                             <Row>
                                 <Col className="info-list-item-caption">Member Since</Col>
-                                <Col>{moment(product.user.createdAt).format("YYYY-MM-DD")}</Col>
+                                <Col>{moment.unix(product.user.createdAt).format("YYYY-MM-DD")}</Col>
                             </Row>
                             <Row>
                                 <Col className="info-list-item-caption">Standing</Col>
@@ -237,21 +239,11 @@ export default class Selling extends React.Component {
                                 <Col className="info-list-item-caption">Runes</Col>
                                 <Col>
                                     <ul className="rune-list">
-                                        <li>
-                                            <div className="badge badge-danger">
-                                                <img src="/images/test_rune.png" /> Wii &times; 2
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="badge badge-danger">
-                                                <img src="/images/test_rune.png" /> Jah &times; 2
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="badge badge-danger">
-                                                <img src="/images/test_rune.png" /> Ham &times; 2
-                                            </div>
-                                        </li>
+                                        {
+                                            product.runes.length > 0 ?
+                                                product.runes.map(rune => this.itemViewRunes(rune)) :
+                                                "No runes socketed."
+                                        }
                                     </ul>
                                 </Col>
                             </Row>
@@ -280,6 +272,16 @@ export default class Selling extends React.Component {
             </ListGroupItem>
         );
     };
+
+    itemViewRunes(rune) {
+        return (
+            <li key={rune.value}>
+                <div className="badge badge-danger" style={{backgroundColor: rune.color}}>
+                    <img src="/images/test_rune.png" /> {rune.label} &times; {rune.amount}
+                </div>
+            </li>
+        );
+    }
 
     render() {
         if(
@@ -332,4 +334,5 @@ export default class Selling extends React.Component {
         return this.state.offers.map(offer => this.renderOffer(offer));
     }       
 }
-    
+
+Selling.contextType = DbContext;

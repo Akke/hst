@@ -45,7 +45,7 @@ module.exports = (app, steam) => {
                     steamId: req.user._json.steamid,
                     username: req.user._json.personaname,
                     avatar: req.user._json.avatarfull,
-                    createdAt: new Date(),
+                    createdAt: Date.now() / 1000 | 0,
                     accountId: null
                 });
 

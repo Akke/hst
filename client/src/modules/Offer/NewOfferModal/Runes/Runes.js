@@ -17,6 +17,8 @@ import {
 import Select, { components } from "react-select";
 import chroma from "chroma-js";
 import FormToast from "../../../FormToast/FormToast";
+import { DbContext } from "../../../../context/db";
+import _ from "lodash";
 
 const runeColorStyles = {
 	control: (styles, state) => ({
@@ -105,20 +107,7 @@ export default class Runes extends React.Component {
 
 			isFormToastOpen: false,
 			formToastHeader: null,
-			formToastBody: null,
-
-			runeSatanic: [
-				{ value: "1", label: "Wii", color: "#F00", amount: "0" },
-			],
-			runeRare: [
-				 { value: "2", label: "Sal", color: "#b79f1b", amount: "0" }
-			],
-			runeCommon: [
-				{ value: "4", label: "Nut", color: "#000", amount: "0" }
-			],
-			runeGem: [
-				{ value: "3", label: "Amethyst", color: "#000", amount: "0" }
-			]
+			formToastBody: null
 		};
 
 		this.onRuneSelect = this.onRuneSelect.bind(this);
@@ -129,30 +118,49 @@ export default class Runes extends React.Component {
 		this.enterKeyOnRuneAmountSave = this.enterKeyOnRuneAmountSave.bind(this);
 		this.customMultiValueLabel = this.customMultiValueLabel.bind(this);
 		this.formToastToggle = this.formToastToggle.bind(this);
-
 		this.getSelectedRunes = this.getSelectedRunes.bind(this);
 	}
 
 	componentDidMount() {
+        const groups = _.chain(this.context.socketables.items)
+        	.groupBy(item => item.type)
+        	.map((value, key) => {
+        		const types = this.context.socketables.types.find(type => key === type._id);
+
+        		return ({ label: types.name, options: value })
+        	})
+        	.value();
+
+        groups.map(group => {
+        	group.options.map((value, key) => {
+        		let color;
+
+        		switch(group.label) {
+        			case "Satanic":
+        				color = "#F00";
+        				break;
+        			case "Rare":
+        				color = "#b79f1b";
+        				break;
+        			case "Common":
+        				color = "#000";
+        				break;
+        			default:
+        				color = "#000";
+        				break;
+        		}
+
+        		group.options[key] = {
+        			value: group.options[key]._id,
+        			label: group.options[key].name,
+        			color: color,
+        			amount: "0"
+        		};
+        	});
+        });
+
 		this.setState({
-			runeGroupedOptions: [
-				{
-					label: "Satanic",
-					options: this.state.runeSatanic
-				},
-				{
-					label: "Rare",
-					options: this.state.runeRare
-				},
-				{
-					label: "Common",
-					options: this.state.runeCommon
-				},
-				{
-					label: "Gems",
-					options: this.state.runeGem
-				}
-			]
+			runeGroupedOptions: groups
 		});
 	}
 
@@ -268,7 +276,7 @@ export default class Runes extends React.Component {
 			return this.formToastToggle("An error occurred!", "The amount is invalid: It must be more than 0.");
 		}
 
-		if(runeId && runeId > 0) {
+		if(runeId && runeId.length === 24) {
 			for(const rune of this.state.runeMultiValue) {
 				if(rune.value == runeId) {
 					this.setState({
@@ -352,3 +360,5 @@ export default class Runes extends React.Component {
     	);
     }
 }
+
+Runes.contextType = DbContext;

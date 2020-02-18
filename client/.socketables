@@ -1,0 +1,331 @@
+[
+    {
+        "name": "Bo",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Dau",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Def",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Drax",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Nut",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Xeo",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Ye",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Hae",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Qi",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Co",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Fio",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Voj",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+    {
+        "name": "Tun",
+        "type": ObjectId("5e4a711dc655a80230696ae7")
+    },
+
+    {
+        "name": "Aux",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Efoel",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Fem",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Fox",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Hel",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Lux",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Nol",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Ox",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Rex",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Sal",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Vex",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Von",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Wei",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+    {
+        "name": "Ber",
+        "type": ObjectId("5e4a711dc655a80230696ae8")
+    },
+
+    {
+        "name": "Dam",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Ham",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Hyg",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Ist",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Jah",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Jex",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Lem",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Wii",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Yeet",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh I",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh II",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh III",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh IV",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh V",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh VI",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh VII",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh VIII",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+    {
+        "name": "Goh IX",
+        "type": ObjectId("5e4a711dc655a80230696ae9")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aea")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aea")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aea")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aea")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aea")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aeb")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aeb")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aeb")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aeb")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aeb")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aec")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aec")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aec")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aec")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aec")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aed")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aed")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aed")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aed")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aed")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aee")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aee")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aee")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aee")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aee")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696aef")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696aef")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696aef")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696aef")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696aef")
+    },
+
+    {
+        "name": "Chipped",
+        "type": ObjectId("5e4a711dc655a80230696af0")
+    },
+    {
+        "name": "Flawed",
+        "type": ObjectId("5e4a711dc655a80230696af0")
+    },
+    {
+        "name": "Normal",
+        "type": ObjectId("5e4a711dc655a80230696af0")
+    },
+    {
+        "name": "Flawless",
+        "type": ObjectId("5e4a711dc655a80230696af0")
+    },
+    {
+        "name": "Perfect",
+        "type": ObjectId("5e4a711dc655a80230696af0")
+    },
+]
