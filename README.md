@@ -14,13 +14,13 @@ Because we run both the backend server and the client server in the same base pr
 
 ### Server
 ```
-cd /hst
+cd hst
 npm install
 ```
 
 ### Client
 ```
-cd /hst/client
+cd client
 npm install
 ```
 
