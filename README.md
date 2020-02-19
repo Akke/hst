@@ -28,6 +28,13 @@ npm install
 - Set up UFW and allow all necessary ports (e.g. 3000, 5000, 27017, 6379) for the server only.
 - Set up a password and user for MongoDB.
 
+# Install and Setup MongoDB
+You can install MongoDB easily by executing
+```
+apt-get install mongodb
+```
+When it's done, you need to edit the configuration menu and change the bind-address to `0.0.0.0`. Find the file `/etc/mongod.conf` (or sometimes it can be `/etc/mongodb.conf`).
+
 # Install and Setup Redis
 We're using Redis so cache our Steam API responses, specifically for the `getPlayerSummaries` endpoint. To install redis, enter the following command.
 ```
